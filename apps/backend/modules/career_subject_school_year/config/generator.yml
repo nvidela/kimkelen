@@ -44,19 +44,19 @@ generator:
         object_actions:
 
           _edit:
-            credentials: [edit_school_year]
+            credentials: [edit_career_subject]
             condition: canBeEdited
-
+            
           tags:
             action: tags
             label: Tags
-            credentials: [edit_school_year]
+            credentials: [edit_career_subject]
             condition: canBeEdited
 
           configuration:
             action:         configuration
             label:          Configuración
-            credentials:    [edit_school_year]
+            credentials:    [edit_career_subject]
             condition:      canBeEdited
 
         batch_actions:

@@ -14,5 +14,5 @@ update:
   credentials: [edit_student_disciplinary_sanction]
 
 delete:
-  credentials: [delete_student_disciplinary_sanction]
+  credentials: [edit_student_disciplinary_sanction]
 

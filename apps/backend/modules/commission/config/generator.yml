@@ -92,7 +92,7 @@ generator:
           close:
             label:          Close period
             action:         close
-            credentials:    [close_course_period]
+            credentials:    [close_course]
             condition:      canBeClosed
 
           printCalification:

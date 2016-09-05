@@ -20,7 +20,7 @@ delete:
   credentials: [edit_course]
 
 close:
-  credentials:  [close_course_period]
+  credentials:  [close_course]
 
 manageCourseDays:
   credentials:  [edit_course_day]

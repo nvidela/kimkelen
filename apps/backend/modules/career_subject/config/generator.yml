@@ -61,7 +61,7 @@ generator:
             label: Correlativas
             action: editCorrelatives
             condition:      canBeEditedCorrelatives
-            credentials: [edit_career_subject]
+            credentials: [edit_correlative]
 
         actions:
           go_back:

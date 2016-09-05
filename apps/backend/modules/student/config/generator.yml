@@ -140,7 +140,7 @@ generator:
 
           regiter_for_careers:
             label: Career register
-            credentials: [edit_student]
+            credentials: [edit_career_student]
             action: registerForCareer
 
           register_for_current_school_year:
