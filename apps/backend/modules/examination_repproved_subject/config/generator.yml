@@ -25,7 +25,7 @@ generator:
           manage_students:
             action: manageStudents
             condition: canEditStudents
-            credentials: [edit_examination_subject_califications]
+            credentials: [edit_examination_repproved_subject_students]
           students:
             action: students
             credentials: [edit_examination_subject_califications]

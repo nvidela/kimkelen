@@ -48,7 +48,7 @@ generator:
 
           manage_students:
             action:         courseSubjectStudent
-            credentials:    [edit_course]
+            credentials:    [edit_course_subject_students]
             condition:      canCourseSubjectStudent
 
           preceptors:
