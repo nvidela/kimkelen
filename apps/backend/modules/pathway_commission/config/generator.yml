@@ -23,7 +23,7 @@ generator:
           %%_pathway_commission_info%%
         actions:
           _new:
-            credentials:    [new_course]
+            credentials:    [edit_course]
             label:          Nueva comisión
         batch_actions: []
         object_actions:

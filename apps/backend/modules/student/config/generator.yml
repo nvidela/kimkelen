@@ -161,7 +161,7 @@ generator:
             action: manageCareerSubjectAllowed
 
           analytical:
-            credentials:  [show_equivalence]
+            credentials:  [show_study]
             action: analytical
             condition: canBeManagedForCareerSubjectAllowed
 
@@ -183,7 +183,7 @@ generator:
             condition: canBeDeactivated
 
           sanctions:
-            credentials: [show_student_disciplinary_sanction]
+            credentials: [new_student_disciplinary_sanction]
             label: Sanctions
             action: sanctions
 
@@ -199,16 +199,17 @@ generator:
             condition: canPrintReportCard
 
           student_reincorporation:
-            credentials: [student_reincorporation_student]
+            credentials: [show_student_reincorporation]
             label: Student reincorporation
             action: reincorporation
             condition: canBeReincorporated
-
+           
           student_assistance_sanction_report:
             label: Student assistance and sanction report
             action: showAssistanceAndSanctionReport
             condition: canGenerateReport
-
+            credentials: [[show_disciplinary_sanction, show_absence ]]
+            
           change_student_status:
             label: Change student status
             credentials: [edit_student]
@@ -291,7 +292,7 @@ generator:
             action: free
             condition: canBeFree
           student_reincorporation:
-            credentials: [student_reincorporation_student]
+            credentials: [show_student_reincorporation]
             label: Student reincorporation
             action: reincorporation
             condition: canBeReincorporated

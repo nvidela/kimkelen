@@ -109,7 +109,7 @@ generator:
 
           _delete:
             condition:      canBeDeleted
-            credentials:    [delete_division]
+            credentials:    [edit_course]
 
         actions: []
         batch_actions:  []

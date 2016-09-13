@@ -23,13 +23,13 @@ generator:
           _edit:
             credentials:   [edit_absence_type]
           _delete:
-            credentials:   [new_absence_type]
+            credentials:   [edit_absence_type]
             condition:     canBeDeleted
         batch_actions:     []
         actions:
           _new:
             label:         Nuevo tipo de ausencia
-            credentials:   [new_absence_type]
+            credentials:   [edit_absence_type]
       filter:
         class:             false
       form:

@@ -1,8 +1,8 @@
 index:
-  credentials:   [show_school_year]
+  credentials:   [show_career_school_year]
 
 configuration:
-  credentials:  [edit_school_year]
+  credentials:  [edit_career_school_year]
 
 updateConfiguration:
-  credentials:  [edit_school_year]
+  credentials:  [edit_career_school_year]

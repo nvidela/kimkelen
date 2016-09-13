@@ -2,10 +2,10 @@ index:
   credentials: [show_course]
 
 new:
-  credentials: [new_division]
+  credentials: [edit_course]
 
 create:
-  credentials: [new_division]
+  credentials: [edit_course]
 
 edit:
   credentials: [edit_course]
@@ -17,7 +17,7 @@ show:
   credentials: [show_course]
 
 delete:
-  credentials: [delete_division]
+  credentials: [edit_course]
 
 division_preceptors:
   credentials:  [edit_division_preceptors]

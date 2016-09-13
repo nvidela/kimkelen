@@ -28,7 +28,7 @@ generator:
             credentials: [edit_examination_repproved_subject_students]
           students:
             action: students
-            credentials: [edit_examination_subject_califications]
+            credentials: [show_examination_repproved_subjects]
           califications:
             action: califications
             credentials: [[edit_examination_repproved_subject_califications, edit_closed_examination]]

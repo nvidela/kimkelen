@@ -26,7 +26,7 @@ courseSubjectStudent:
   credentials:  [edit_course]
 
 califications:
-  credentials:  [edit_course_student_mark]
+  credentials:  [edit_division_course_califications]
 
 courseTeachers:
   credentials:  [edit_course]

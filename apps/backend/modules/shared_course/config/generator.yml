@@ -55,7 +55,7 @@ generator:
 
           _delete:
             condition:      canBeDeleted
-            credentials:    [delete_division]
+            credentials:    [edit_course]
 
           #Datos postales:        [_address]
           #Datos de salud:        [_health]

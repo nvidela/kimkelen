@@ -2,10 +2,10 @@ index:
   credentials: [show_course]
 
 new:
-  credentials: [new_course]
+  credentials: [edit_course]
 
 create:
-  credentials: [new_course]
+  credentials: [edit_course]
 
 edit:
   credentials: [edit_course]

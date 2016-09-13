@@ -62,7 +62,7 @@ generator:
         batch_actions:
           configuration:
             label: Configuración
-            credentials: [edit_school_year]
+            credentials: [edit_career_school_year]
         actions:
           _user_export:
       filter:  ~

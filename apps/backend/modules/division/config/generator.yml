@@ -28,7 +28,7 @@ generator:
           <div class='info_div'>%%_division_info%%</div>
         actions:
           _new:
-            credentials: [new_division]
+            credentials: [edit_course]
             label: Nueva división
           _user_export:
         batch_actions: []
@@ -61,7 +61,7 @@ generator:
 
           division_courses:
             action: divisionCourses
-            credentils: [show_course]
+            credentials: [show_course]
 
           printCalification:
             label:   Print califications
@@ -72,18 +72,19 @@ generator:
           boletines:
             action: printReportCard
             label:  Imprimir boletines division
-            credentials:  [[report_card, edit_division_preceptors,show_division_course_califications]]
+            credentials:  [show_division_course_califications]
             condition: canPrintReportCards
 
           student_conduct:
             action: studentConduct
             label: Student conduct
             condition: canManageConduct
-            credentials: [edit_division_preceptors]
+            credentials: [edit_course]
 
           show_disciplinary_sanction_report:
             label: Student disciplinary sanction report
             action: showDisciplinarySanctionReport
+            credentials:  [show_disciplinary_sanction]
 
           division_configure:
             label:  Configuración de cantidad de inasistencias permitidas
@@ -105,9 +106,10 @@ generator:
           show_assistance_report:
             label: Student assistance report
             action: showAssistanceReport
+            credentials:    [show_course]
 
           _delete:
-            credentials: [delete_division]
+            credentials: [edit_course]
             condition: canBeDeleted
 
       filter:
@@ -151,7 +153,7 @@ generator:
             label:  Materias
             credentils: [show_course]
           _delete:
-            credentials: [delete_division]
+            credentials: [edit_course]
             condition: canBeDeleted
       exportation:
         enabled: true

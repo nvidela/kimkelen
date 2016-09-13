@@ -17,7 +17,7 @@ delete:
   credentials: [edit_examination_repproved_subject]
 
 students:
-  credentials: [edit_examination_repproved_subject_students]
+  credentials: [show_examination_repproved_subjects]
 
 califications:
   credentials: [edit_examination_repproved_subjects_califications]

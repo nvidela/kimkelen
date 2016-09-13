@@ -2,7 +2,7 @@ students:
   credentials: [show_career]
 
 subjects:
-  credentials: [edit_career]
+  credentials: [show_career]
 
 subjectOptions:
   credentials: [edit_career]

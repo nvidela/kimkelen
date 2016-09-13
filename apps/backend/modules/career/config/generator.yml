@@ -40,7 +40,7 @@ generator:
           subjects:
             action:         subjects
             label:          Materias
-            credentials:    [edit_career]
+            credentials:    [show_career_subject]
           career_view:
             action:         careerView
             label:          Plan de estudios
@@ -48,7 +48,7 @@ generator:
           show_inscripted:
             action:         students
             label:          Alumnos inscriptos
-            credentials:    [show_career]
+            credentials:    [show_career_student]
         batch_actions:      {}
         actions:
           _new:

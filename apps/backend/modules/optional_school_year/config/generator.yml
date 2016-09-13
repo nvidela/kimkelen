@@ -24,13 +24,13 @@ generator:
           tags:
             action: tags
             label: Tags
-            credentials: [edit_school_year]
+            credentials: [edit_career_school_year]
             condition: canBeEdited  
 
           optionals:
             action:         optional
             label:          Editar opciones
-            credentials:    [edit_school_year]
+            credentials:    [edit_career_school_year]
             condition: canBeEdited
 
         batch_actions:  []

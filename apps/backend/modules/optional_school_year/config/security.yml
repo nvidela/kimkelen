@@ -1,5 +1,5 @@
 index:
-  credentials:   [show_school_year]
+  credentials:   [show_career_school_year]
 
 optional:
-  credentials:    [edit_school_year]
+  credentials:    [edit_career_school_year]

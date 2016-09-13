@@ -35,7 +35,7 @@ generator:
             condition: canInactive
 
           _show:
-            credentials: [admin]
+            credentials: [edit_user]
           _edit:
             credentials: [edit_user]
             condition: canEdit

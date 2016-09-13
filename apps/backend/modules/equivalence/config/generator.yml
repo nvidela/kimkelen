@@ -20,7 +20,7 @@ generator:
           equivalence:
             action:         makeUpEquivalence
             label:          Cargar equivalencias
-            credentials:    [show_school_year]
+            credentials:    [show_career_school_year]
 
       filter:
         class: false
