@@ -8,7 +8,7 @@ root:
 
   administration:
     title: Administración
-    credentials: [[show_occupation, show_absence_reason, show_justification_type, show_division_title, show_user, show_group, edit_modules, backup, show_orientation, show_classroom, show_tag]]
+    credentials: [[show_occupation, show_absence_reason, show_justification_type, show_division_title, show_user, show_group,show_orientation, show_classroom,show_tag]]
     menu:
       reference_data:
         title: Datos de referencia
@@ -64,15 +64,15 @@ root:
           absence_types:
             title:  Tipos de ausencias
             url:  @absence_type
-            credentials:  [[new_absence_type, edit_absence_type]]
+            credentials:  [edit_absence_type]
           disciplinary_sanction_types:
             title:  Motivos de sanciones
             url:  @disciplinary_sanction_type
-            credentials:  [[new_disciplinary_sanction_type, edit_disciplinary_sanction_type]]
+            credentials:  [edit_disciplinary_sanction_type]
           sanction_types:
             title:  Tipos de sanciones
             url:  @sanction_type
-            credentials:  [[new_disciplinary_sanction_type, edit_disciplinary_sanction_type]]
+            credentials:  [edit_disciplinary_sanction_type]
           resources:
             title: Recurso para aulas
             url: @resources
@@ -200,16 +200,16 @@ root:
                 credentials: [edit_personal]
           student_office:
             title: Personal de la oficina de alumnos
-            credentials: [show_student_office]
+            credentials: [show_personal]
             menu:
               student_office_list:
                 title: Personal de la oficina de alumnos
                 url: student_office/index
-                credentials: [show_student_office]
+                credentials: [show_personal]
               student_office_new:
                 title: Nuevo personal de la oficina de alumnos
                 url: student_office/new
-                credentials: [edit_student_office]
+                credentials: [edit_personal]
 
   students:
     title: Alumnos

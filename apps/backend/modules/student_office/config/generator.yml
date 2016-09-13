@@ -34,11 +34,11 @@ generator:
 
         object_actions:
           _show:
-            credentials:   [show_student_office]
+            credentials:   [show_personal]
           _edit:
-            credentials:   [edit_student_office]
+            credentials:   [edit_personal]
           _delete:
-            credentials:   [edit_student_office]
+            credentials:   [edit_personal]
 
           activate:
             label: Set active

@@ -18,9 +18,9 @@ generator:
         display: [name]
         object_actions:
           _edit:
-            credentials: [edit_sub_orientation]
+            credentials: [edit_orientation]
           _delete:
-            credentials: [edit_sub_orientation]
+            credentials: [edit_orientation]
             condition:   canBeDeleted
         batch_actions: []
         actions:

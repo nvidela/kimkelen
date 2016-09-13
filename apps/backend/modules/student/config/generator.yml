@@ -161,7 +161,7 @@ generator:
             action: manageCareerSubjectAllowed
 
           analytical:
-            credentials:  [show_study]
+            credentials:  [show_student]
             action: analytical
             condition: canBeManagedForCareerSubjectAllowed
 
