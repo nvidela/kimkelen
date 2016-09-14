@@ -1,2 +1,2 @@
 all:
-  credentials:  [edit_user]
+  credentials:  [admin]
