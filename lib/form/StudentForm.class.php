@@ -56,6 +56,28 @@ class StudentForm extends BaseStudentForm
 
 	  $this->setValidator('origin_school_id', new sfValidatorPropelChoice(array('required' => false, 'model' => 'OriginSchool', 'column' => 'id')));
 	  $this->getWidgetSchema()->setLabel('origin_school_id', 'Origin school');
+          
+          $this->setWidget('personal_data', new sfWidgetFormInputFile());
+          $this->setValidator('personal_data', new sfValidatorFile(array(
+                                                            'path' => Person::getPersonalDataDirectory(),
+                                                            'max_size' => '8888888',
+                                                            'mime_types' => array(
+                                                                            'application/zip',
+                                                                            'application/octet-stream'
+                                                                            ),
+                                                            'required' => false,
+                                                            )));
+                                                           
+          if(!is_null($this->getObject()->getPersonalData()))
+          {
+            $this->setWidget('current_personal_data', new mtWidgetFormPartial(array('module' => 'personal', 'partial' => 'downloable_personal_data', 'form' => $this)));
+            $this->setValidator('current_personal_data', new sfValidatorPass(array('required' => false)));
+            $this->setWidget('delete_personal_data', new sfWidgetFormInputCheckbox());
+            $this->setValidator('delete_personal_data', new sfValidatorBoolean(array('required' => false)));
+          }
+
+          $this->getWidgetSchema()->setHelp('personal_data', 'The file must be of the following types: zip, rar.');
+
   }
 
   public function unsetFields()
@@ -65,13 +87,18 @@ class StudentForm extends BaseStudentForm
 
   public function getFormFieldsDisplay()
   {
-    $personal_data_fields = array('person-lastname', 'person-firstname', 'person-identification_type', 'person-identification_number', 'person-sex', 'global_file_number', 'origin_school_id', 'person-cuil', 'person-birthdate', 'person-birth_country', 'person-birth_state','person-birth_department', 'person-birth_city', 'person-photo', 'person-observations' );
+    $personal_data_fields = array('person-lastname', 'person-firstname', 'person-identification_type', 'person-identification_number', 'person-sex', 'global_file_number', 'origin_school_id', 'person-cuil', 'person-birthdate', 'person-birth_country', 'person-birth_state','person-birth_department', 'person-birth_city', 'person-photo', 'person-observations','personal_data','file_data' );
 
     if($this->getObject()->getPerson()->getPhoto())
     {
       $personal_data_fields = array_merge($personal_data_fields, array('person-current_photo', 'person-delete_photo'));
     }
 
+    if(!is_null($this->getObject()->getPersonalData()))
+    {
+        $personal_data_fields = array_merge($personal_data_fields, array('current_personal_data', 'delete_personal_data'));
+    }
+    
     return array(
           'Personal data'   =>  $personal_data_fields,
           'Contact data'    =>  array('person-email', 'person-phone', 'person-address'),
