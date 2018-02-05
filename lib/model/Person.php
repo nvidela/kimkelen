@@ -225,12 +225,6 @@ class Person extends BasePerson
   {
     return $this->getBirthdate('d-m-Y');
   }
-  
-   public static function getPersonalDataDirectory()
-  {
-    return sfConfig::get('sf_data_dir') . DIRECTORY_SEPARATOR . 'persons-personal-data';
-
-  }
 }
 
 sfPropelBehavior::add('Person', array('changelog'));

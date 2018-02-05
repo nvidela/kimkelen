@@ -47,8 +47,6 @@ class StudentForm extends BaseStudentForm
 	  $this->getWidgetSchema()->setHelp('folio_number', __('Format must be XX-XXXX'));
 	  $this->getWidgetSchema()->setHelp('order_of_merit', __('Format must be XX-XXXX'));
 
-	  $this->validatorSchema->setOption("allow_extra_fields", true);
-
 	  $this->setWidget('origin_school_id', new ncWidgetFormSelect2Ajax(
 		  array('url' => '@search_schools'),
 		  array('size' => '30', 'class' => 'origin_schools')
@@ -59,7 +57,7 @@ class StudentForm extends BaseStudentForm
           
           $this->setWidget('personal_data', new sfWidgetFormInputFile());
           $this->setValidator('personal_data', new sfValidatorFile(array(
-                                                            'path' => Person::getPersonalDataDirectory(),
+                                                            'path' => Student::getPersonalDataDirectory(),
                                                             'max_size' => '8888888',
                                                             'mime_types' => array(
                                                                             'application/zip',
@@ -67,17 +65,41 @@ class StudentForm extends BaseStudentForm
                                                                             ),
                                                             'required' => false,
                                                             )));
-                                                           
+                                                                                                    
           if(!is_null($this->getObject()->getPersonalData()))
           {
             $this->setWidget('current_personal_data', new mtWidgetFormPartial(array('module' => 'personal', 'partial' => 'downloable_personal_data', 'form' => $this)));
             $this->setValidator('current_personal_data', new sfValidatorPass(array('required' => false)));
             $this->setWidget('delete_personal_data', new sfWidgetFormInputCheckbox());
             $this->setValidator('delete_personal_data', new sfValidatorBoolean(array('required' => false)));
+            
           }
 
           $this->getWidgetSchema()->setHelp('personal_data', 'The file must be of the following types: zip, rar.');
-
+          
+          $this->setWidget('file_data', new sfWidgetFormInputFile());
+          $this->setValidator('file_data', new sfValidatorFile(array(
+                                                            'path' => Student::getFileDataDirectory(),
+                                                            'max_size' => '8888888',
+                                                            'mime_types' => array(
+                                                                            'application/zip',
+                                                                            'application/x-rar-compressed',
+                                                                            'application/x-tar'
+                                                                            ),
+                                                            'required' => false,
+                                                            )));
+                                                           
+          if(!is_null($this->getObject()->getFileData()))
+          {
+            $this->setWidget('current_file_data', new mtWidgetFormPartial(array('module' => 'personal', 'partial' => 'downloable_file_data', 'form' => $this)));
+            $this->setValidator('current_file_data', new sfValidatorPass(array('required' => false)));
+            $this->setWidget('delete_file_data', new sfWidgetFormInputCheckbox());
+            $this->setValidator('delete_file_data', new sfValidatorBoolean(array('required' => false)));
+            
+          }
+          $this->getWidgetSchema()->setHelp('file_data', 'The file must be of the following types: zip, tar.');     
+          
+          $this->validatorSchema->setOption("allow_extra_fields", true);
   }
 
   public function unsetFields()
@@ -87,16 +109,24 @@ class StudentForm extends BaseStudentForm
 
   public function getFormFieldsDisplay()
   {
-    $personal_data_fields = array('person-lastname', 'person-firstname', 'person-identification_type', 'person-identification_number', 'person-sex', 'global_file_number', 'origin_school_id', 'person-cuil', 'person-birthdate', 'person-birth_country', 'person-birth_state','person-birth_department', 'person-birth_city', 'person-photo', 'person-observations','personal_data','file_data' );
+    $personal_data_fields = array('person-lastname', 'person-firstname', 'person-identification_type', 'person-identification_number', 'person-sex', 'global_file_number', 'origin_school_id', 'person-cuil', 'person-birthdate', 'person-birth_country', 'person-birth_state','person-birth_department', 'person-birth_city', 'person-photo', 'person-observations');
 
     if($this->getObject()->getPerson()->getPhoto())
     {
       $personal_data_fields = array_merge($personal_data_fields, array('person-current_photo', 'person-delete_photo'));
     }
-
+    $personal_data_fields[] = 'personal_data';
+    
     if(!is_null($this->getObject()->getPersonalData()))
     {
         $personal_data_fields = array_merge($personal_data_fields, array('current_personal_data', 'delete_personal_data'));
+    }
+    $personal_data_fields[] = 'file_data' ;
+    
+    if(!is_null($this->getObject()->getFileData()))
+    {
+        $personal_data_fields = array_merge($personal_data_fields, array('current_file_data', 'delete_file_data'));
+        $this->getWidgetSchema()->moveField('file_data', sfWidgetFormSchema::LAST);
     }
     
     return array(
@@ -116,13 +146,28 @@ class StudentForm extends BaseStudentForm
         {
           $guard_user->addGroupByName($student_group);
           $guard_user->save($con);
-        }
+        }       
     }
+    else
+    {
+        $values = $this->getValues();
+        if(isset($values['delete_personal_data']) && $values['delete_personal_data'])
+        {   //elimino personal data
+            $this->getObject()->deletePersonalData();
+        }
+        
+        if(isset($values['delete_file_data']) && $values['delete_file_data'])
+        {   //elimino file data
+            $this->getObject()->deleteFileData();
+        }
+        
+        
+    }
+
   }
 
-
-	public function getJavaScripts()
-	{
-		return array_merge(parent::getJavaScripts(), array("/dcReloadedFormExtraPlugin/js/select_jquery_autocomplete.js"));
-	}
+    public function getJavaScripts()
+    {
+            return array_merge(parent::getJavaScripts(), array("/dcReloadedFormExtraPlugin/js/select_jquery_autocomplete.js"));
+    }
 }

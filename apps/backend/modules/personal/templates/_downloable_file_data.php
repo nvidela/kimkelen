@@ -18,4 +18,4 @@
  * along with Kimkëlen.  If not, see <http://www.gnu.org/licenses/gpl-2.0.html>.
  */ ?>
 <?php use_helper('Form');?>
-<?php echo link_to(image_tag('zip.png').'&nbsp;'.__('Personal data of %%student%%', array('%%student%%' => $form->getObject()->__toString())), 'mainBackend/downloablePersonalData?id='.$form->getObject()->getId()); ?>
+<?php echo link_to(image_tag('zip.png').'&nbsp;'.__('File data of %%student%%', array('%%student%%' => $form->getObject()->__toString())), 'mainBackend/downloableFileData?id='.$form->getObject()->getId()); ?>
