@@ -44,6 +44,18 @@ class LvmStudentForm extends StudentForm
     {
       $personal_data_fields = array_merge($personal_data_fields, array('person-current_photo', 'person-delete_photo'));
     }
+    $personal_data_fields[] = 'personal_data';
+    
+    if(!is_null($this->getObject()->getPersonalData()))
+    {
+        $personal_data_fields = array_merge($personal_data_fields, array('current_personal_data', 'delete_personal_data'));
+    }
+    $personal_data_fields[] = 'file_data' ;
+    
+    if(!is_null($this->getObject()->getFileData()))
+    {
+        $personal_data_fields = array_merge($personal_data_fields, array('current_file_data', 'delete_file_data'));
+    }
     return array(
           'Personal data'   =>  $personal_data_fields,
           'Contact data'    =>  array('person-email', 'person-phone', 'person-address'),
