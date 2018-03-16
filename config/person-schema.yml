@@ -175,6 +175,14 @@ classes:
       educational_dependency:
         type: varchar(255)
         required: false
+      personal_data:
+        description:      Información personal del alumno (Fotocopia del dni, ficha de SIPU, vacunas, partida de nacimiento)
+        type:             varchar(255)
+        required:         false
+      file_data:
+        description:      Información del legajo del alumno (Ficha de salud, ficha social, expedientes)
+        type:             varchar(255)
+        required:         false
 
   Brotherhood:
     tableName:            brotherhood

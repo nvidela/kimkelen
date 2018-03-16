@@ -4644,6 +4644,38 @@
                 <source>Print averages</source>
                 <target>Planilla de promedios</target>
             </trans-unit>
+            <trans-unit>
+                <source>Current personal data</source>
+                <target>Datos personales actuales</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Delete personal data</source>
+                <target>Eliminar datos personales</target>
+            </trans-unit>
+            <trans-unit>
+                <source>File data</source>
+                <target>Información del legajo</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Current file data</source>
+                <target>Información del legajo actual</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Delete file data</source>
+                <target>Eliminar información del legajo</target>
+            </trans-unit>
+            <trans-unit>
+                <source>File data of %%student%%</source>
+                <target>Información del legajo de %%student%%</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Personal data of %%student%%</source>
+                <target>Datos personales de %%student%%</target>
+            </trans-unit>
+            <trans-unit>
+                <source>The file must be of the following types: zip, tar.</source>
+                <target>El archivo debe ser de los siguiente tipos: zip, tar.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

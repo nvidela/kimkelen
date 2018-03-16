@@ -164,5 +164,67 @@ class mainBackendActions extends sfActions
 
     return $this->redirect("mainBackend/index");
   }
+  
+  private function getFileData(sfWebRequest $request, $attachment = false)
+  {
+    $student= StudentPeer::retrieveByPK($request->getParameter('id'));
+
+    if($student && $student->getFileData())
+    {
+      $filePath = $student->getFileDataFullPath();
+      $response = $this->getResponse();
+      $response->setHttpHeader('Pragma', '');
+      $response->setHttpHeader('Cache-Control', '');
+      $data = file_get_contents($filePath);
+      $file_exploded = explode('.', $student->getFileData());
+      $file_extension = end($file_exploded);
+
+      $content_type = $file_extension;
+      
+      $response->setHttpHeader('Content-Type', 'application/'.$content_type);
+      if($attachment)
+      {
+        $response->setHttpHeader('Content-Disposition', "attachment; filename=\"".$student->getFileData()."\"");
+      }
+      $response->setContent($data);
+    }
+  }
+  
+  private function getPersonalData(sfWebRequest $request, $attachment = false)
+  {
+    $student= StudentPeer::retrieveByPK($request->getParameter('id'));
+
+    if($student && $student->getPersonalData())
+    {
+      $filePath = $student->getPersonalDataFullPath();
+      $response = $this->getResponse();
+      $response->setHttpHeader('Pragma', '');
+      $response->setHttpHeader('Cache-Control', '');
+      $data = file_get_contents($filePath);
+      $file_exploded = explode('.', $student->getPersonalData());
+      $file_extension = end($file_exploded);
+
+      $content_type = $file_extension;
+      
+      $response->setHttpHeader('Content-Type', 'application/'.$content_type);
+      if($attachment)
+      {
+        $response->setHttpHeader('Content-Disposition', "attachment; filename=\"".$student->getPersonalData()."\"");
+      }
+      $response->setContent($data);
+    }
+  }
+  
+  public function executeDownloableFileData(sfWebRequest $request)
+  {
+      $this->getFileData($request, true);
+      return sfView::NONE;   
+  }
+  
+  public function executeDownloabledPersonalData()
+  {
+      $this->getPersonalData($request,true);
+      return sfView::NONE;
+  }
 
 }

@@ -1722,6 +1722,7 @@ class Student extends BaseStudent
     return implode(',  ', $tutors);
   }
   
+
   public function getStudentTutorsEmailString()
   {
     $tutors = array();
@@ -1733,6 +1734,51 @@ class Student extends BaseStudent
 
     return implode(';  ', $tutors);
   }
+
+  public static function getPersonalDataDirectory()
+  {
+    return sfConfig::get('sf_data_dir') . DIRECTORY_SEPARATOR . 'persons-personal-data';
+
+  }
+  
+  public function deletePhysicalData($path)
+  {
+    if (file_exists($path))
+      unlink($path);
+  }
+  
+  public function getPersonalDataFullPath()
+  {
+    return self::getPersonalDataDirectory() . DIRECTORY_SEPARATOR . $this->getPersonalData();
+
+  }
+  
+  public function getFileDataFullPath()
+  {
+    return self::getFileDataDirectory() . DIRECTORY_SEPARATOR . $this->getFileData();
+
+  }
+  
+  public function deletePersonalData()
+  {
+    $this->deletePhysicalData($this->getPersonalDataFullPath());
+    $this->setPersonalData(NULL);
+    $this->save();
+
+  }
+  
+  public static function getFileDataDirectory() {
+      return sfConfig::get('sf_data_dir') . DIRECTORY_SEPARATOR . 'persons-file-data';
+  }
+  
+  public function deleteFileData()
+  {
+    $this->deletePhysicalData($this->getFileDataFullPath());
+    $this->setFileData(NULL);
+    $this->save();
+
+  }
+  
 }
 
 sfPropelBehavior::add('Student', array('person_delete'));
