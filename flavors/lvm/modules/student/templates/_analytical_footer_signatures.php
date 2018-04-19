@@ -16,5 +16,23 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Kimkëlen.  If not, see <http://www.gnu.org/licenses/gpl-2.0.html>.
- */ ?>
-<?php include_partial('course_student_mark/course_subject_marks_table', array('course_subjects' => array($course_subject)))?>
+ *
+ */ 
+?>
+<div id="analytic_signatures">
+    <div id="signature_1" class="signature">
+        <div>Prof. Lucas Demarco</div>
+        <?php echo __('analytic_signature_1'); ?>
+    </div>
+    <div id="signature_2" class="signature">
+        <div>Prof. María Constanza Erbetta</div>
+        <?php echo __('analytic_signature_2'); ?>
+    </div>
+    <div id="signature_3" class="signature">
+        <?php echo __('analytic_signature_3'); ?>
+    </div>
+    <div id="signature_4" class="signature">
+        <div>Prof. María Fernanda Bustos</div>
+        <?php echo __('analytic_signature_4'); ?>
+    </div>
+</div>

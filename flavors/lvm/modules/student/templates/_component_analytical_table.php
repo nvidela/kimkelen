@@ -31,12 +31,12 @@
     <table class="table gridtable_bordered">
       <thead>
         <tr>
-          <th colspan="7"><?php echo __('Year ' . $year) ?></th>
+          <th colspan="7" class="analytical_year"><?php echo __('Year ' . $year) ?></th>
         </tr>
         <tr>
           <th rowspan="2"><?php echo __("Condition") ?></th>
           <th rowspan="2"><?php echo __("Mes") ?></th>
-          <th rowspan="2"><?php echo __("Año Lectivo") ?></th>
+          <th rowspan="2"><?php echo __("Year") ?></th>
           <th class="text-left" rowspan="2"><?php echo __("Subject") ?></th>
           <th colspan="2"><?php echo __("Calification") ?></th>
         </tr>
@@ -46,7 +46,6 @@
         </tr>
       </thead>
       <tbody class="analytical_body_table">
-      <?php if(! is_null($object->get_subjects_in_year($year))): ?>
       <?php foreach ($object->get_subjects_in_year($year) as $css):?>
         <tr>
           <td class="text-center" width="5%"><?php echo ($css->getCondition()?$css->getCondition():'<hr/>') ?></td>
@@ -54,13 +53,12 @@
           <td class="text-center" width="10%"><?php echo ($css->getApprovedDate() ? $css->getApprovedDate()->format('Y') : '<hr/>') //($css->getSchoolYear()?$css->getSchoolYear():'<hr/>') ?></td>
           <td align="left" width="40%"><?php echo $css->getSubjectName() ?></td>
           <td class="text-center" width="10%"><?php echo ($css->getMark()?$css->getMark():'<strong>'.__('Adeuda').'</strong>') ?></td>
-          <td class="text-center"><?php echo ($css->getMarkAsSymbol()?$css->getMarkAsSymbol():'<strong>'.__('Adeuda').'</strong>') ?></td>
+          <td class="text-center"><?php echo ($css->getMarkAsSymbol()? ucfirst(strtolower($css->getMarkAsSymbol())):'<strong>'.__('Adeuda').'</strong>') ?></td>
         </tr>
       <?php endforeach ?>
-      <?php endif; ?>
         <tr>
-          <th colspan="5" style="text-align:left !important;"><?php echo ucfirst(strtolower($object->get_plan_name())) .'.  '. __($object->get_str_year_status($year)) ?></th>
-          <th colspan="2"><?php echo __('Average') ?>: <?php echo ( $object->get_year_average($year) ? round($object->get_year_average($year), 2) : '-'); ?>    </th>
+          <th colspan="5" style="text-align:left !important;"><?php echo __($object->get_str_year_status($year)) ?></th>
+          <th colspan="2"><?php echo __('Average') ?>: <?php echo ( $object->get_year_average($year) ? number_format(round($object->get_year_average($year), 2), 2, '.', '') : '-') ;?>    </th>
         </tr>
       </tbody>
     </table>
@@ -68,7 +66,7 @@
   <?php endforeach ?>
 
   <?php if ($object->has_completed_career()): ?>
-    <div id="promedio_gral"><?php echo __('Promedio general'); ?>: <span id="promedio_gral_valor"><?php echo ($object->get_total_average()?round($object->get_total_average(),2):'-'); ?></span></div>
+    <div id="promedio_gral"><?php echo __('Promedio general'); ?>: <span id="promedio_gral_valor"><?php echo ($object->get_total_average()? number_format(round($object->get_total_average(), 2), 2, '.', '') :'-'); ?></span></div>
   <?php endif; ?>
 <?php endif; ?>
 

@@ -393,16 +393,19 @@ class studentActions extends autoStudentActions
     $this->career_student = CareerStudentPeer::retrieveByStudent($request->getParameter("id"));
     $this->analytical = AnalyticalBehaviourFactory::getInstance($this->career_student->getStudent());
     $this->analytical->process();
-    $this->analytic = new Analytic();
+    $form_class = SchoolBehaviourFactory::getInstance()->getFormFactory()->getAnalyticForm();
+    $this->form  = new $form_class( new Analytic());
+    
   }
   
   public function executePrintAnalytical(sfWebRequest $request)
   {
     $this->career_student = CareerStudentPeer::retrieveByPK($request->getParameter("id"));
     $this->analytical = AnalyticalBehaviourFactory::getInstance($this->career_student->getStudent());
-    $this->analytical->process(); //falta el imprimir el analitico sin CBFE
+    $this->analytical->process(); 
     $this->analytic = new Analytic();
     $this->analytic->setCareerStudent($this->career_student);
+    $this->analytic->setCertificateNumber($request->getParameter('certificate'));
     $this->analytic->setDescription($this->career_student->getStudent()->getPerson());
     $this->analytic->save();
 
@@ -892,8 +895,7 @@ class studentActions extends autoStudentActions
   {
       $this->p = array();
       $this->student_career_school_years = $student->getStudentCareerSchoolYears();
-      $scsy_cursed = $student->getLastStudentCareerSchoolYearCursed();	
-      
+      $scsy_cursed = $student->getLastStudentCareerSchoolYearCursed();
       $status = array(StudentCareerSchoolYearStatus::APPROVED,StudentCareerSchoolYearStatus::IN_COURSE,StudentCareerSchoolYearStatus::LAST_YEAR_REPPROVED,StudentCareerSchoolYearStatus::FREE);
 
         foreach ($this->student_career_school_years as $scsy)
@@ -924,20 +926,23 @@ class studentActions extends autoStudentActions
       
        /* Si el alumno repitio el año lectivo anterior y no fue inscripto a ninguna materia durante este año
         *  es porque lo retiraron al iniciar el año lectivo. Por lo tanto debo mostrar las materias por las cuales repitio.*/   
-        $school_year = $student->getLastStudentCareerSchoolYearCursed()->getCareerSchoolYear()->getSchoolYear();
-        $scsy = $student->isRepprovedInSchoolYear($school_year); 
-        $css = $student->getCourseSubjectStudentsForSchoolYear($student->getLastStudentCareerSchoolYear()->getCareerSchoolYear()->getSchoolYear());
+        if(!is_null($student->getLastStudentCareerSchoolYearCursed()))
+        {
+            $school_year = $student->getLastStudentCareerSchoolYearCursed()->getCareerSchoolYear()->getSchoolYear();
+            $scsy = $student->isRepprovedInSchoolYear($school_year); 
+            $css = $student->getCourseSubjectStudentsForSchoolYear($student->getLastStudentCareerSchoolYear()->getCareerSchoolYear()->getSchoolYear());
 
-        if(!is_null($scsy) && count($css) == 0 )
-        {
-            $dis_cs = StudentDisapprovedCourseSubjectPeer::retrieveByStudentAndCareerSchoolYear($student,$scsy->getCareerSchoolYear());  
+            if(!is_null($scsy) && count($css) == 0 )
+            {
+                $dis_cs = StudentDisapprovedCourseSubjectPeer::retrieveByStudentAndCareerSchoolYear($student,$scsy->getCareerSchoolYear());  
+            }
+
+            foreach($dis_cs as $c)
+            {
+               $this->p[] = $c->getCourseSubjectStudent();
+            } 
         }
-        
-        foreach($dis_cs as $c)
-        {
-           $this->p[] = $c->getCourseSubjectStudent();
-        }   
-      
+  
   }
   
   public function executeBatchManageAllowedSubject(sfWebRequest $request, $objects)

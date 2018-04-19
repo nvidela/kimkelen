@@ -99,17 +99,17 @@ class BaseAnalyticalBehaviour
     
     public function get_year_average($year)
     {
-      return $this->objects[$year]['average'];
+      return ($this->objects[$year]) ? $this->objects[$year]['average'] : NULL;
     }
     
     public function get_year_status($year)
-    {
-        return $this->objects[$year]['status'];
+    { 
+        return (!is_null($this->objects[$year])) ? $this->objects[$year]['status'] : NULL;
     }
 
     public function get_str_year_status($year)
     {
-        return $this->_str_year_statuses[$this->get_year_status($year)]; 
+        return (!is_null($this->get_year_status($year)))? $this->_str_year_statuses[$this->get_year_status($year)] : ""; 
     }
     
     public function get_total_average()
@@ -180,7 +180,8 @@ class BaseAnalyticalBehaviour
             {
 				foreach ($years as $year)
 				{
-					if ($current_year->getYear() < $year ||( $current_year->getYear() == $year && $current_year->getId() != $scsy_cursed->getId() ))
+					if ($current_year->getYear() < $year ||( $current_year->getYear() == $year && $current_year->getId() != $scsy_cursed->getId() 
+                                                && $scsy_cursed->getStatus() != StudentCareerSchoolYearStatus::REPPROVED ))
 					{
 						$this->remaining_years[] = $year;
 					}
@@ -333,7 +334,8 @@ class BaseAnalyticalBehaviour
                 $career_school_year = $scsy->getCareerSchoolYear();
                 $school_year = $career_school_year->getSchoolYear();
 
-                $csss = SchoolBehaviourFactory::getInstance()->getCourseSubjectStudentsForAnalytics($this->get_student(), $school_year);
+                $approved = StudentApprovedCareerSubjectPeer::retrieveByStudentAndSchoolYear($this->get_student(), $school_year);
+                $csss = SchoolBehaviourFactory::getInstance()->getCourseSubjectStudentsForAnalytics($this->get_student(), $school_year, $scsy);
 				
                 foreach ($csss as $css)
                 {	
@@ -368,8 +370,7 @@ class BaseAnalyticalBehaviour
                 }
                 $this->process_total_average($avg_mark_for_year);
                 
-            }
-            
+            }            
         }
     }
 
