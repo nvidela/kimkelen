@@ -30,7 +30,9 @@
 class StudentForm extends BaseStudentForm
 {
   public function configure()
-  {
+  {ini_set("upload_max_filesize", "70000000");
+       ini_set("post_max_size", "70000000");
+
 	  $this->unsetFields();
 
 	  $person = $this->getObject()->getPerson();
@@ -58,10 +60,10 @@ class StudentForm extends BaseStudentForm
           $this->setWidget('personal_data', new sfWidgetFormInputFile());
           $this->setValidator('personal_data', new sfValidatorFile(array(
                                                             'path' => Student::getPersonalDataDirectory(),
-                                                            'max_size' => '7M',
+                                                            'max_size' => '7000000',
                                                             'mime_types' => array(
                                                                             'application/zip',
-                                                                            'application/octet-stream'
+                                                                'application/x-tar'
                                                                             ),
                                                             'required' => false,
                                                             )));
@@ -75,16 +77,15 @@ class StudentForm extends BaseStudentForm
             
           }
 
-          $this->getWidgetSchema()->setHelp('personal_data', 'The file must be of the following types: zip, rar.');
+          $this->getWidgetSchema()->setHelp('personal_data', 'The file must be of the following types: zip, tar.');
           
           $this->setWidget('file_data', new sfWidgetFormInputFile());
           $this->setValidator('file_data', new sfValidatorFile(array(
                                                             'path' => Student::getFileDataDirectory(),
-                                                            'max_size' => '7M',
+                                                            'max_size' => '7000000',
                                                             'mime_types' => array(
                                                                             'application/zip',
-                                                                            'application/x-rar-compressed',
-                                                                            'application/x-tar'
+                                                                'application/x-tar'
                                                                             ),
                                                             'required' => false,
                                                             )));
@@ -97,8 +98,8 @@ class StudentForm extends BaseStudentForm
             $this->setValidator('delete_file_data', new sfValidatorBoolean(array('required' => false)));
             
           }
-          $this->getWidgetSchema()->setHelp('file_data', 'The file must be of the following types: zip, tar.');     
-          
+          $this->getWidgetSchema()->setHelp('file_data', 'The file must be of the following types: zip, tar .');     
+           
           $this->validatorSchema->setOption("allow_extra_fields", true);
   }
 
@@ -138,7 +139,9 @@ class StudentForm extends BaseStudentForm
 
   protected function doSave($con = null)
   {
-      ini_set("upload_max_filesize", "7M");
+     ini_set("upload_max_filesize", "70000000");
+     ini_set("post_max_size", "70000000");
+     
       
     parent::doSave($con);
     $guard_user = $this->getObject()->getPersonSfGuardUser();

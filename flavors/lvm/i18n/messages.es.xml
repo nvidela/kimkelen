@@ -338,239 +338,224 @@
                 <target>Los cambios fueron actualizados exitosamente.</target>
             </trans-unit>
             <trans-unit>
-                    <source>Cancel</source>
-                    <target>Cancelar</target>
+                <source>Cancel</source>
+                <target>Cancelar</target>
             </trans-unit>
             <trans-unit>
-                    <source>The selected items have been approved successfully.</source>
-                    <target>Los elementos seleccionados han sido aprobados exitosamente.</target>
+                <source>The selected items have been approved successfully.</source>
+                <target>Los elementos seleccionados han sido aprobados exitosamente.</target>
             </trans-unit>
             <trans-unit>
-                    <source>The date must be after %min%.</source>
-                    <target>La fecha debe ser posterior al %min%.</target>
+                <source>The date must be after %min%.</source>
+                <target>La fecha debe ser posterior al %min%.</target>
             </trans-unit>
             <trans-unit>
-                    <source>"%value%" is not an integer.</source>
-                    <target>"%value%" no es un valor numérico.</target>
+                <source>"%value%" is not an integer.</source>
+                <target>"%value%" no es un valor numérico.</target>
             </trans-unit>
             <trans-unit>
-                    <source>"%value%" must be greater than %min%.</source>
-                    <target>"%value%" debe ser mayor que %min%.</target>
+                <source>"%value%" must be greater than %min%.</source>
+                <target>"%value%" debe ser mayor que %min%.</target>
             </trans-unit>
             <trans-unit>
-                    <source>"%value%" must be less than %max%.</source>
-                    <target>"%value%" debe ser menor que %max%.</target>
+                <source>"%value%" must be less than %max%.</source>
+                <target>"%value%" debe ser menor que %max%.</target>
             </trans-unit>
             <trans-unit>
-                    <source>Status</source>
-                    <target>Estado</target>
+                <source>Status</source>
+                <target>Estado</target>
             </trans-unit>
             <trans-unit>
-                    <source>Start date</source>
-                    <target>Fecha de inicio</target>
+                <source>Start date</source>
+                <target>Fecha de inicio</target>
             </trans-unit>
             <trans-unit>
-                    <source>End date</source>
-                    <target>Fecha de fin</target>
+                <source>End date</source>
+                <target>Fecha de fin</target>
             </trans-unit>
             <trans-unit>
-                    <source>Invalid.</source>
-                    <target>El valor ingresado es inválido.</target>
+                <source>Invalid.</source>
+                <target>El valor ingresado es inválido.</target>
             </trans-unit>
             <trans-unit>
-                    <source>Enrollments</source>
-                    <target>Inscripciones</target>
+                <source>Enrollments</source>
+                <target>Inscripciones</target>
             </trans-unit>
             <trans-unit>
-                    <source>Examination</source>
-                    <target>Mesa de exámenes</target>
+                <source>Examination</source>
+                <target>Mesa de exámenes</target>
             </trans-unit>
             <trans-unit>
-                    <source>Teachers</source>
-                    <target>Docentes</target>
+                <source>Teachers</source>
+                <target>Docentes</target>
             </trans-unit>
             <trans-unit>
-                    <source>Students</source>
-                    <target>Alumnos</target>
+                <source>Students</source>
+                <target>Alumnos</target>
             </trans-unit>
             <trans-unit>
-                    <source>Career subject</source>
-                    <target>Materia</target>
+                <source>Career subject</source>
+                <target>Materia</target>
             </trans-unit>
             <trans-unit>
-                    <source>Change status</source>
-                    <target>Cambiar estado</target>
+                <source>Change status</source>
+                <target>Cambiar estado</target>
             </trans-unit>
             <trans-unit>
-                    <source>Mark</source>
-                    <target>Calificación</target>
+                <source>Mark</source>
+                <target>Calificación</target>
             </trans-unit>
             <trans-unit>
-                    <source>Student</source>
-                    <target>Alumno</target>
+                <source>Student</source>
+                <target>Alumno</target>
             </trans-unit>
             <trans-unit>
-                    <source>Marks</source>
-                    <target>Calificaciones</target>
+                <source>Marks</source>
+                <target>Calificaciones</target>
             </trans-unit>
             <trans-unit>
-                    <source>Day</source>
-                    <target>Fecha</target>
+                <source>Day</source>
+                <target>Fecha</target>
             </trans-unit>
             <trans-unit>
-                    <source>Starts at</source>
-                    <target>Fecha de inicio</target>
+                <source>Starts at</source>
+                <target>Fecha de inicio</target>
             </trans-unit>
             <trans-unit>
-                    <source>Ends at</source>
-                    <target>Fecha de fin</target>
+                <source>Ends at</source>
+                <target>Fecha de fin</target>
             </trans-unit>
             <trans-unit>
-                    <source>Classroom</source>
-                    <target>Aula</target>
+                <source>Classroom</source>
+                <target>Aula</target>
             </trans-unit>
             <trans-unit>
-                    <source>The username and/or password is invalid.</source>
-                    <target>Usuario y/o contraseña inválidos.</target>
+                <source>The username and/or password is invalid.</source>
+                <target>Usuario y/o contraseña inválidos.</target>
             </trans-unit>
             <trans-unit>
-                    <source>Approval method</source>
-                    <target>Método de aprobación</target>
-            </trans-unit>
-
-            <trans-unit>
-                    <source>Tutors</source>
-                    <target>Tutores</target>
+                <source>Approval method</source>
+                <target>Método de aprobación</target>
             </trans-unit>
             <trans-unit>
-                    <source>Plan Name</source>
-                    <target>Nombre del plan</target>
+                <source>Tutors</source>
+                <target>Tutores</target>
             </trans-unit>
             <trans-unit>
-                    <source>Career Name</source>
-                    <target>Nombre de la Carrera</target>
+                <source>Plan Name</source>
+                <target>Nombre del plan</target>
             </trans-unit>
             <trans-unit>
-                    <source>Career Quantity Years</source>
-                    <target>Cantidad de años de la carrera</target>
+                <source>Career Name</source>
+                <target>Nombre de la Carrera</target>
             </trans-unit>
             <trans-unit>
-                    <source>Year</source>
-                    <target>Año</target>
+                <source>Career Quantity Years</source>
+                <target>Cantidad de años de la carrera</target>
             </trans-unit>
             <trans-unit>
-                    <source>Subjects</source>
-                    <target>Materias</target>
+                <source>Year</source>
+                <target>Año</target>
             </trans-unit>
             <trans-unit>
-                    <source>subjects</source>
-                    <target>materias</target>
+                <source>Subjects</source>
+                <target>Materias</target>
             </trans-unit>
             <trans-unit>
-                    <source>Subject</source>
-                    <target>Materia</target>
+                <source>subjects</source>
+                <target>materias</target>
             </trans-unit>
             <trans-unit>
-                    <source>Correlatives</source>
-                    <target>Correlativas</target>
+                <source>Subject</source>
+                <target>Materia</target>
             </trans-unit>
             <trans-unit>
-                    <source>Postal Address</source>
-                    <target>Domicilio</target>
+                <source>Correlatives</source>
+                <target>Correlativas</target>
             </trans-unit>
             <trans-unit>
-                    <source>Address</source>
-                    <target>Domicilio</target>
+                <source>Postal Address</source>
+                <target>Domicilio</target>
             </trans-unit>
             <trans-unit>
-                    <source>All</source>
-                    <target>Todas</target>
+                <source>Address</source>
+                <target>Domicilio</target>
             </trans-unit>
             <trans-unit>
-                    <source>Options</source>
-                    <target>Opciones</target>
+                <source>All</source>
+                <target>Todas</target>
             </trans-unit>
             <trans-unit>
-                    <source>Course List</source>
-                    <target>Listado de materias</target>
+                <source>Options</source>
+                <target>Opciones</target>
             </trans-unit>
             <trans-unit>
-                    <source>Has correlative previous year</source>
-                    <target>Tiene como correlativas las materias del año anterior</target>
+                <source>Course List</source>
+                <target>Listado de materias</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Has correlative previous year</source>
+                <target>Tiene como correlativas las materias del año anterior</target>
             </trans-unit>
             <!--
 A PARTIR DE ACA EMPEZAMOS TRADUCCIONES 2.0
 -->
             <trans-unit>
-                    <source>Career</source>
-                    <target>Carrera</target>
+                <source>Career</source>
+                <target>Carrera</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>Careers</source>
-                    <target>Carreras</target>
+                <source>Careers</source>
+                <target>Carreras</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>Lastname</source>
-                    <target>Apellido</target>
+                <source>Lastname</source>
+                <target>Apellido</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>Firstname</source>
-                    <target>Nombre</target>
+                <source>Firstname</source>
+                <target>Nombre</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>School year registered?</source>
-                    <target>Matriculado?</target>
+                <source>School year registered?</source>
+                <target>Matriculado?</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>Career register</source>
-                    <target>Administrar carreras</target>
+                <source>Career register</source>
+                <target>Administrar carreras</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>School year register</source>
-                    <target>Administrar matrícula</target>
+                <source>School year register</source>
+                <target>Administrar matrícula</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>Register %student% in current school year</source>
-                    <target>Matricular a %student% en el año lectivo actual</target>
+                <source>Register %student% in current school year</source>
+                <target>Matricular a %student% en el año lectivo actual</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>Current school year registration status for %student%</source>
-                    <target>Estado de la matrícula de %student% en el año lectivo actual</target>
+                <source>Current school year registration status for %student%</source>
+                <target>Estado de la matrícula de %student% en el año lectivo actual</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>Careers %student% is registered</source>
-                    <target>Carreras en las que %student% se encuentra inscripto</target>
+                <source>Careers %student% is registered</source>
+                <target>Carreras en las que %student% se encuentra inscripto</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>Register to a new career</source>
-                    <target>Inscribir en nueva carrera</target>
+                <source>Register to a new career</source>
+                <target>Inscribir en nueva carrera</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>Career id</source>
-                    <target>Plan de estudio</target>
+                <source>Career id</source>
+                <target>Plan de estudio</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>Student id</source>
-                    <target>Alumno</target>
+                <source>Student id</source>
+                <target>Alumno</target>
             </trans-unit>
-
             <trans-unit>
-                    <source>Shift id</source>
-                    <target>Turno</target>
+                <source>Shift id</source>
+                <target>Turno</target>
             </trans-unit>
-
             <trans-unit>
                     <source>File number sequence</source>
                     <target>Siguiente número de alumno</target>
@@ -4233,24 +4218,24 @@ A PARTIR DE ACA EMPEZAMOS TRADUCCIONES 2.0
                     <target>Cursos de la comisión %course%</target>
             </trans-unit>
             <trans-unit>
-                    <source>Students that have more or equal to disciplinary sanctions in current school year.</source>
-                    <target>Buscará a aquellos alumnos que tengan >= sanciones a la cantidad ingresada registradas en el ciclo lectivo actual.</target>
+                <source>Students that have more or equal to disciplinary sanctions in current school year.</source>
+                <target>Buscará a aquellos alumnos que tengan >= sanciones a la cantidad ingresada registradas en el ciclo lectivo actual.</target>
             </trans-unit>
             <trans-unit>
-                    <source>Disciplinary sanction count</source>
-                    <target>Sanciones acumuladas mayor o igual a</target>
+                <source>Disciplinary sanction count</source>
+                <target>Sanciones acumuladas mayor o igual a</target>
             </trans-unit>
             <trans-unit>
-                    <source>Move students from course %course%</source>
-                    <target>Mover estudiantes del curso %course%</target>
+                <source>Move students from course %course%</source>
+                <target>Mover estudiantes del curso %course%</target>
             </trans-unit>
             <trans-unit>
-                    <source>Move students to other course subject</source>
-                    <target>Mover estudiantes a otro curso</target>
+                <source>Move students to other course subject</source>
+                <target>Mover estudiantes a otro curso</target>
             </trans-unit>
             <trans-unit>
-                    <source>This action allows deletion of students from course only if them do not have associated information for this course. For those cases, deletion won't be performed to avoid information loss. Try instead move student from one course to another.</source>
-                    <target>Se podrán eliminar alumnos de la comisión/curso siempre y cuando no existan datos asociados (calificaciones o asistencias). Para esos casos, el sistema no realizará la acción de desinscripción para evitar la pérdida
+                <source>This action allows deletion of students from course only if them do not have associated information for this course. For those cases, deletion won't be performed to avoid information loss. Try instead move student from one course to another.</source>
+                <target>Se podrán eliminar alumnos de la comisión/curso siempre y cuando no existan datos asociados (calificaciones o asistencias). Para esos casos, el sistema no realizará la acción de desinscripción para evitar la pérdida
                             de información. En estos casos, utilice la acción:</target>
             </trans-unit>
             <trans-unit>
