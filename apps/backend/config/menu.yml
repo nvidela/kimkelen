@@ -276,6 +276,10 @@ root:
         title: Listado de tutores
         url: tutor/index
         credentials: [show_tutor]
+      generate_global_file_number:
+        title: Generar legajo a ingresantes
+        url: student/generateGlobalFileNumber
+        credentials: []
 
   help:
     title: Ayuda

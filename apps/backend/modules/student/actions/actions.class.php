@@ -775,5 +775,12 @@ class studentActions extends autoStudentActions
       }
     }
   }
+  
+  public function executeGenerateGLobalFileNumber(sfWebRequest $request)
+  {
+      $this->students = StudentPeer::retrieveByGlobalFileNumber('ingresante');
+      
+      
+  }
 
 }

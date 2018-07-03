@@ -222,4 +222,14 @@ class StudentPeer extends BaseStudentPeer
     return $s;
   }
   
+  public static function retrieveByGlobalFileNumber($file_number)
+  {
+      $c = new Criteria();
+      $c->add(self::GLOBAL_FILE_NUMBER,$file_number);
+      
+      $s = self::doSelect($c);
+
+      return $s;
+  }
+  
 }
