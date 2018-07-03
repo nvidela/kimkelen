@@ -222,14 +222,25 @@ class StudentPeer extends BaseStudentPeer
     return $s;
   }
   
-  public static function retrieveByGlobalFileNumber($file_number)
+  public static function retrieveByIncomingStudents()
   {
-      $c = new Criteria();
-      $c->add(self::GLOBAL_FILE_NUMBER,$file_number);
+      $current_sy = SchoolYearPeer::retrieveCurrent(); 
+      $last_sy = SchoolYearPeer::retrieveLastYearSchoolYear($current_sy);
       
-      $s = self::doSelect($c);
-
-      return $s;
+      $criteria = new Criteria();
+      $criteria->add(SchoolYearStudentPeer::SCHOOL_YEAR_ID,$last_sy->getId());
+      $criteria->clearSelectColumns();
+      $criteria->addSelectColumn(SchoolYearStudentPeer::STUDENT_ID);
+      $stmt = SchoolYearStudentPeer::doSelectStmt($criteria);
+      $students_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+      
+      
+      $c = new Criteria();
+      $c->addJoin(StudentPeer::ID, SchoolYearStudentPeer::STUDENT_ID);
+      $c->add(SchoolYearStudentPeer::SCHOOL_YEAR_ID, $current_sy->getId());
+      $c->add(StudentPeer::ID,$students_ids,Criteria::NOT_IN);
+      
+      return StudentPeer::doSelect($c);
   }
   
 }

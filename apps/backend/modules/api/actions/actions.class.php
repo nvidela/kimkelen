@@ -151,7 +151,7 @@ class apiActions extends sfActions
 				
 				$student= new Student();
 				$student->setPerson($s_person); 
-				$student->setGlobalFileNumber('ingresante');
+				$student->setGlobalFileNumber('888888');
 				
 				//chequeo que la escuela este en la BBDD
 				$school = OriginSchoolPeer::retrieveByPk($s_origin_school_id);
