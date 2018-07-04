@@ -779,8 +779,13 @@ class studentActions extends autoStudentActions
   public function executeGenerateGlobalFileNumber(sfWebRequest $request)
   {
       $this->students = StudentPeer::retrieveByIncomingStudents();
-      var_dump($this->students);
-      die();
+      
+      $this->title = "Generate global file number";
+      $this->help = "Solo los alumnos que se encuentren matriculados y estén inscriptos en las divisiones se les generará legajo.";
+      
+      $this->form = new GenerateGlobalFileNumberForm();
+      $this->form->setStudents($this->students);
+      
       
   }
 
