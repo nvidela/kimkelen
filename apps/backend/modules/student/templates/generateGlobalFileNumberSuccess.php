@@ -24,27 +24,25 @@
 <?php include_javascripts_for_form($form) ?>
 
 <div id="sf_admin_container">
-  <h1></h1>
-
-  <div id="sf_admin_content">
-    <form action="<?php echo url_for('student/updateCareerSubjectAllowed') ?>" method="post">
-      <ul class="sf_admin_actions">
-        <li><?php echo link_to(__('Back'), '@student', array('class' => 'sf_admin_action_go_back')) ?></li>
-        <li><input type="submit" value="<?php echo __('Save') ?>" /></li>
-      </ul>
-      
-      <fieldset>
-
-        <?php echo $form?>
-
-      </fieldset>
-
-      <ul class="sf_admin_actions">
-        <li><?php echo link_to(__('Back'), '@student', array('class' => 'sf_admin_action_go_back')) ?></li>
-        <li><input type="submit" value="<?php echo __('Save') ?>" /></li>
-      </ul>
-    </form>
-  </div>
-  <div style="margin-top: 1px; clear: both;">
-  </div>
+    <h1><?= $title ?></h1>
+    <div>
+	<div class="warning change_status">
+            <?php echo __('Solo se muestran aquellos alumnos que no tienen legajo generado y se encuentran matriculados en el año lectivo vigente.') ?>
+	</div>
+    </div>
+    <div id="sf_admin_content">
+        <form action="<?php echo url_for('student/generateGlobalFileNumber') ?>" method="post">
+            <ul class="sf_admin_actions">
+                <li><?php echo link_to(__('Back'), '@student', array('class' => 'sf_admin_action_go_back')) ?></li>
+                <li><input type="submit" value="<?php echo __('Save') ?>" /></li>
+            </ul>
+            <fieldset>
+                <?php echo $form?>
+            </fieldset>
+            <ul class="sf_admin_actions">
+                <li><?php echo link_to(__('Back'), '@student', array('class' => 'sf_admin_action_go_back')) ?></li>
+                <li><input type="submit" value="<?php echo __('Save') ?>" /></li>
+            </ul>
+        </form>
+    </div>
 </div>

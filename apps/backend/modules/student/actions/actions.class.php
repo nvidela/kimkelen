@@ -784,8 +784,19 @@ class studentActions extends autoStudentActions
       $this->help = "Solo los alumnos que se encuentren matriculados y estén inscriptos en las divisiones se les generará legajo.";
       
       $this->form = new GenerateGlobalFileNumberForm();
-      $this->form->setStudents($this->students);
-      
+
+      if ($request->isMethod("post"))
+        {
+          $this->form->bind($request->getParameter($this->form->getName()), $request->getFiles($this->form->getName()));
+          if ($this->form->isValid())
+          { 
+            $this->form->save();
+
+            $this->getUser()->setFlash("notice", "Los ítems fueron actualizados correctamente.");
+
+            $this->redirect("@student");
+          }
+        }
       
   }
 
