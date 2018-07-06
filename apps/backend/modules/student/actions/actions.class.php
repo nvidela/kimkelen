@@ -781,8 +781,7 @@ class studentActions extends autoStudentActions
       $this->students = StudentPeer::retrieveByIncomingStudents();
       
       $this->title = "Generate global file number";
-      $this->help = "Solo los alumnos que se encuentren matriculados y estén inscriptos en las divisiones se les generará legajo.";
-      
+      $form_name =  SchoolBehaviourFactory::getInstance()->getFormFactory()->getGenerateGlobalFileNumberForm();
       $this->form = new GenerateGlobalFileNumberForm();
 
       if ($request->isMethod("post"))

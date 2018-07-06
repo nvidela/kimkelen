@@ -27,7 +27,7 @@
     <h1><?= $title ?></h1>
     <div>
 	<div class="warning change_status">
-            <?php echo __('Solo se muestran aquellos alumnos que no tienen legajo generado y se encuentran matriculados en el año lectivo vigente.') ?>
+            <?php echo __('Solo se muestran aquellos alumnos que no tienen legajo generado, están inscriptos en las divisiones y matriculados en el año lectivo vigente.') ?>
 	</div>
     </div>
     <div id="sf_admin_content">

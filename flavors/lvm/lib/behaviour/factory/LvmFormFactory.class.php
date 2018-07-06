@@ -47,4 +47,9 @@ class LvmFormFactory extends BaseFormFactory
   public function getAnalyticForm() {
       return 'LvmAnalyticForm';
   }
+  
+  public function getGenerateGlobalFileNumberForm()
+  {
+      return 'LvmGenerateGlobalFileNumberForm';
+  }
 }

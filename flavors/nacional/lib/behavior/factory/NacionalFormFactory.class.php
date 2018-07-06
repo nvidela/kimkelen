@@ -33,5 +33,10 @@ class NacionalFormFactory extends BaseFormFactory {
   {
       return 'NacionalAnalyticForm';    
   }
+  
+  public function getGenerateGlobalFileNumberForm()
+  {
+      return 'NacionalGenerateGlobalFileNumberForm';
+  }
 
 }

@@ -19,53 +19,8 @@
  */ ?>
 <?php
 
-class GenerateGlobalFileNumberForm extends sfForm
+class NacionalGenerateGlobalFileNumberForm extends GenerateGlobalFileNumberForm
 {
-  
-  public static function getCriteriaForAvailableStudentsIds()
-  {
-    $c_sy = SchoolYearPeer::retrieveCurrent();
-    $c = new Criteria();
-    $c->addJoin(StudentPeer::ID,SchoolYearStudentPeer::STUDENT_ID);
-    $c->addJoin(DivisionStudentPeer::STUDENT_ID, StudentPeer::ID);
-    $c->addJoin(DivisionPeer::ID, DivisionStudentPeer::DIVISION_ID);
-    $c->addJoin(DivisionPeer::CAREER_SCHOOL_YEAR_ID, CareerSchoolYearPeer::ID);
-    $c->add(CareerSchoolYearPeer::SCHOOL_YEAR_ID,$c_sy->getId());
-    $c->add(SchoolYearStudentPeer::SCHOOL_YEAR_ID,$c_sy->getId());
-    $c->add(StudentPeer::GLOBAL_FILE_NUMBER,array('888888'),Criteria::IN);
-    $c->clearSelectColumns();
-    $c->addSelectColumn(StudentPeer::ID);
-    $stmt = StudentPeer::doSelectStmt($c);
-    $students = $stmt->fetchAll(PDO::FETCH_COLUMN);
-    
-    
-    $criteria = new Criteria();
-    $criteria->add(StudentPeer::ID,$students,Criteria::IN);
-    $criteria->addJoin(StudentPeer::PERSON_ID, PersonPeer::ID);
-    $criteria->add(PersonPeer::IS_ACTIVE, true);
-
-    return $criteria;
-
-  }  
-    
-  public function configure()
-  {
-      
-    $this->widgetSchema['student_list'] = new csWidgetFormStudentMany(array('criteria'=> self::getCriteriaForAvailableStudentsIds()));
-    $this->getWidget('student_list')->setLabel('Alumnos');
-
-    $this->validatorSchema['student_list'] = new sfValidatorPass();
-    
-    
-    $sf_formatter_revisited = new sfWidgetFormSchemaFormatterRevisited($this);
-    $this->getWidgetSchema()->addFormFormatter("Revisited", $sf_formatter_revisited);
-    $this->getWidgetSchema()->setFormFormatterName("Revisited");
-    
-    $this->widgetSchema->setNameFormat('generate_global_file_number[%s]');
-    
-    $this->validatorSchema->setOption("allow_extra_fields", true);
-  }
-  
   public function save($con = null)
   {
     if (!$this->isValid())
@@ -91,7 +46,7 @@ class GenerateGlobalFileNumberForm extends sfForm
       if (is_array($values))
       {
           //tomo el número de legajo más grande.
-
+          //NACIONAL
           $sy = SchoolYearPeer::retrieveCurrent()->getYear();
           $c = new Criteria();
           $c->add(StudentPeer::GLOBAL_FILE_NUMBER,"%$sy%", Criteria::LIKE);
@@ -110,9 +65,9 @@ class GenerateGlobalFileNumberForm extends sfForm
           
           foreach ($students as $s) 
           {
-              $s->setGlobalFileNumber($num);
+              $global_file_number = $num . '/' . $sy;
+              $s->setGlobalFileNumber($global_file_number);
               $s->save($con);
-              
               $num ++;
           }
       }

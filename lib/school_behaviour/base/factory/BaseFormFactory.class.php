@@ -313,4 +313,9 @@ abstract class BaseFormFactory extends InterfaceFormFactory{
       return 'AnalyticForm';    
   }
   
+  public function getGenerateGlobalFileNumberForm()
+  {
+      return 'GenerateGlobalFileNumberForm';
+  }
+  
 }
