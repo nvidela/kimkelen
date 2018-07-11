@@ -20,33 +20,7 @@
 <?php
 
 class LvmGenerateGlobalFileNumberForm extends GenerateGlobalFileNumberForm
-{
-  public static function getCriteriaForAvailableStudentsIds()
-  {
-    $c_sy = SchoolYearPeer::retrieveCurrent();
-    $c = new Criteria();
-    $c->addJoin(StudentPeer::ID,SchoolYearStudentPeer::STUDENT_ID);
-    $c->addJoin(DivisionStudentPeer::STUDENT_ID, StudentPeer::ID);
-    $c->addJoin(DivisionPeer::ID, DivisionStudentPeer::DIVISION_ID);
-    $c->addJoin(DivisionPeer::CAREER_SCHOOL_YEAR_ID, CareerSchoolYearPeer::ID);
-    $c->add(CareerSchoolYearPeer::SCHOOL_YEAR_ID,$c_sy->getId());
-    $c->add(SchoolYearStudentPeer::SCHOOL_YEAR_ID,$c_sy->getId());
-    $c->add(StudentPeer::GLOBAL_FILE_NUMBER,array('888888','ingresante'),Criteria::IN);
-    $c->clearSelectColumns();
-    $c->addSelectColumn(StudentPeer::ID);
-    $stmt = StudentPeer::doSelectStmt($c);
-    $students = $stmt->fetchAll(PDO::FETCH_COLUMN);
-    
-    
-    $criteria = new Criteria();
-    $criteria->add(StudentPeer::ID,$students,Criteria::IN);
-    $criteria->addJoin(StudentPeer::PERSON_ID, PersonPeer::ID);
-    $criteria->add(PersonPeer::IS_ACTIVE, true);
-
-    return $criteria;
-
-  }
-  
+{  
   public function save($con = null)
   {
     if (!$this->isValid())

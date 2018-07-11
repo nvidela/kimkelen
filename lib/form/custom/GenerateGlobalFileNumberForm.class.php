@@ -32,7 +32,7 @@ class GenerateGlobalFileNumberForm extends sfForm
     $c->addJoin(DivisionPeer::CAREER_SCHOOL_YEAR_ID, CareerSchoolYearPeer::ID);
     $c->add(CareerSchoolYearPeer::SCHOOL_YEAR_ID,$c_sy->getId());
     $c->add(SchoolYearStudentPeer::SCHOOL_YEAR_ID,$c_sy->getId());
-    $c->add(StudentPeer::GLOBAL_FILE_NUMBER,array('888888'),Criteria::IN);
+    $c->add(StudentPeer::GLOBAL_FILE_NUMBER,array('888888','ingresante',''),Criteria::IN);
     $c->clearSelectColumns();
     $c->addSelectColumn(StudentPeer::ID);
     $stmt = StudentPeer::doSelectStmt($c);
@@ -92,10 +92,11 @@ class GenerateGlobalFileNumberForm extends sfForm
       {
           //tomo el número de legajo más grande.
 
-          $sy = SchoolYearPeer::retrieveCurrent()->getYear();
           $c = new Criteria();
-          $c->add(StudentPeer::GLOBAL_FILE_NUMBER,"%$sy%", Criteria::LIKE);
-          $num = StudentPeer::doCount($c);
+          $c->add(StudentPeer::GLOBAL_FILE_NUMBER,array('888888', 'ingresante'), Criteria::NOT_IN);
+          $c->addDescendingOrderByColumn(StudentPeer::GLOBAL_FILE_NUMBER);
+          $student = StudentPeer::doSelectOne($c);
+          $num = $student->getGlobalFileNumber();
           
           
           $c=new Criteria();

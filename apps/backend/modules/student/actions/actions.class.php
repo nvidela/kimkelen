@@ -782,7 +782,7 @@ class studentActions extends autoStudentActions
       
       $this->title = "Generate global file number";
       $form_name =  SchoolBehaviourFactory::getInstance()->getFormFactory()->getGenerateGlobalFileNumberForm();
-      $this->form = new GenerateGlobalFileNumberForm();
+      $this->form = new $form_name;
 
       if ($request->isMethod("post"))
         {
