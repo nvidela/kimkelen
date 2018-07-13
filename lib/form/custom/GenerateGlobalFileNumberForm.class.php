@@ -32,7 +32,7 @@ class GenerateGlobalFileNumberForm extends sfForm
     $c->addJoin(DivisionPeer::CAREER_SCHOOL_YEAR_ID, CareerSchoolYearPeer::ID);
     $c->add(CareerSchoolYearPeer::SCHOOL_YEAR_ID,$c_sy->getId());
     $c->add(SchoolYearStudentPeer::SCHOOL_YEAR_ID,$c_sy->getId());
-    $c->add(StudentPeer::GLOBAL_FILE_NUMBER,array('888888','ingresante',''),Criteria::IN);
+    $c->add(StudentPeer::GLOBAL_FILE_NUMBER,array('ingresante',''),Criteria::IN);
     $c->clearSelectColumns();
     $c->addSelectColumn(StudentPeer::ID);
     $stmt = StudentPeer::doSelectStmt($c);
@@ -91,13 +91,20 @@ class GenerateGlobalFileNumberForm extends sfForm
       if (is_array($values))
       {
           //tomo el número de legajo más grande.
-
+          $num = 0;
           $c = new Criteria();
-          $c->add(StudentPeer::GLOBAL_FILE_NUMBER,array('888888', 'ingresante'), Criteria::NOT_IN);
-          $c->addDescendingOrderByColumn(StudentPeer::GLOBAL_FILE_NUMBER);
-          $student = StudentPeer::doSelectOne($c);
-          $num = $student->getGlobalFileNumber();
+          $c->add(StudentPeer::GLOBAL_FILE_NUMBER,array('', 'ingresante'), Criteria::NOT_IN);
+          $c->clearSelectColumns();
+          $c->addSelectColumn(StudentPeer::GLOBAL_FILE_NUMBER);
+          $stmt = StudentPeer::doSelectStmt($c);
+          $students_num = $stmt->fetchAll(PDO::FETCH_COLUMN);
           
+          if(!empty($students_num))
+          {
+              arsort($students_num);
+              $students_num = array_slice($students_num, 0,1);
+              $num = $students_num[0];
+          }
           
           $c=new Criteria();
           $c->addJoin(StudentPeer::PERSON_ID, PersonPeer::ID);
@@ -106,18 +113,20 @@ class GenerateGlobalFileNumberForm extends sfForm
           $c->addAscendingOrderByColumn(PersonPeer::FIRSTNAME);
           
           $students = StudentPeer::doSelect($c);
-          
-          $num ++;
-          
+
           foreach ($students as $s) 
           {
-              $s->setGlobalFileNumber($num);
-              $s->save($con);
-              
+              //chequeo que no exista un alumno con ese número de legajo
               $num ++;
+              $student = StudentPeer::retrieveByGlobalFileNumber($num);
+              if(!$student)
+              {
+                $s->setGlobalFileNumber($num);
+                $s->save($con);
+              }
           }
       }
-      $con->commit();
+    $con->commit();
      }
     catch (Exception $e)
     {

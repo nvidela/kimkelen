@@ -778,8 +778,6 @@ class studentActions extends autoStudentActions
   
   public function executeGenerateGlobalFileNumber(sfWebRequest $request)
   {
-      $this->students = StudentPeer::retrieveByIncomingStudents();
-      
       $this->title = "Generate global file number";
       $form_name =  SchoolBehaviourFactory::getInstance()->getFormFactory()->getGenerateGlobalFileNumberForm();
       $this->form = new $form_name;
@@ -791,7 +789,7 @@ class studentActions extends autoStudentActions
           { 
             $this->form->save();
 
-            $this->getUser()->setFlash("notice", "Los ítems fueron actualizados correctamente.");
+            $this->getUser()->setFlash("notice", 'The item was updated successfully.');
 
             $this->redirect("@student");
           }
