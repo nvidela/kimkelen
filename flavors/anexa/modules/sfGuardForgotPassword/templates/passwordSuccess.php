@@ -18,29 +18,29 @@
  * along with Kimkëlen.  If not, see <http://www.gnu.org/licenses/gpl-2.0.html>.
  */ ?>
 <?php use_helper('I18N', 'Form', 'Javascript') ?>
-
+<?php use_stylesheet('main.css', '', array('media' => 'all')) ?>
+<?php use_stylesheet('login-backend.css', '', array('media' => 'all')) ?>
 <div id="login">
   <div class="left">
     <div class="logo"></div>
   </div>
 
-  <form action="<?php echo url_for('@sf_guard_signin') ?>" method="post">
+  <form action="<?php echo url_for('@sf_guard_forgot_password') ?>" method="post">
     <?php echo $form->renderHiddenFields() ?>
     <div class="right">
       <div class="title_login">Login</div>
 
       <div class="form_row">
-
-        <?php echo $form ?>
-
+        <p class="info-reset-password"><?php echo __("Your e-mail address will be asked in order to send you further instructions about how to reset your password.") ?></p>
+          <?php echo $form ?>
       </div>
       <div class="form_row">
-        <input type="submit" value="Ingresar" name="commit" class="button"/>
+        <button class="button" type="submit"> <?php echo __('Change password') ?></button>
       </div>
+      <div class="form_row">
+        <li class="forgot_password"><?php echo link_to(__('Go back'), '@homepage'); ?> </li>
+      </div> 
       
-      <div class="form_row">
-           <li class="forgot_password"><?php echo link_to(__('Forgot your password?'), '@sf_guard_forgot_password') ?></a></li>
-      </div>
     </div>
   </form>
   <div class="form_footer">
@@ -55,3 +55,4 @@
 <?php javascript_tag() ?>
 jQuery('#signin_username').focus();
 <?php end_javascript_tag() ?>
+

@@ -4667,6 +4667,26 @@
                 <source>Career edit</source>
                 <target>Editar inscripción a carrera</target>
             </trans-unit>
+            <trans-unit>
+                <source>Forgot your password?</source>
+                <target>¿Olvidó su contraseña?</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Your e-mail address will be asked in order to send you further instructions about how to reset your password.</source>
+                <target>Se le solicitará su dirección de correo electrónico registrada o su nombre de usuario para poder enviarle un e-mail con instrucciones para crear una nueva contraseña.</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Username or email</source>
+                <target>Usuario o e-mail</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Change password</source>
+                <target>Cambiar contraseña</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Your username or e-mail address is required.</source>
+                <target>Usuario y/o e-mail requerido.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

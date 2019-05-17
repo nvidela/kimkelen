@@ -89,7 +89,7 @@ body {
  text-align:left;
 }
 
-#signin_password, #signin_username {
+#signin_password, #signin_username, #forgot_password_username_or_email {
  border:1px solid #000;
  margin:4px;
  padding:2px;
@@ -156,4 +156,18 @@ body {
 .captcha {
   margin-top:10px;
   float:left;
+}
+
+.forgot_password {
+  list-style: none;
+  font-size: 12px;
+  margin: 20px;
+}
+
+.info-reset-password{
+  font-size: 12px;
+}
+
+.logo_footer{
+  margin-top: 10px;    
 }
