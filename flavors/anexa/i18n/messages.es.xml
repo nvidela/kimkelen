@@ -4672,12 +4672,12 @@
                 <target>¿Olvidó su contraseña?</target>
             </trans-unit>
             <trans-unit>
-                <source>Your e-mail address will be asked in order to send you further instructions about how to reset your password.</source>
-                <target>Se le solicitará su dirección de correo electrónico registrada o su nombre de usuario para poder enviarle un e-mail con instrucciones para crear una nueva contraseña.</target>
+                <source>Your username will be asked in order to send you further instructions about how to reset your password.</source>
+                <target>Se le solicitará su nombre de usuario para poder enviarle un e-mail con instrucciones para crear una nueva contraseña.</target>
             </trans-unit>
             <trans-unit>
                 <source>Username or email</source>
-                <target>Usuario o e-mail</target>
+                <target>Usuario</target>
             </trans-unit>
             <trans-unit>
                 <source>Change password</source>
@@ -4685,7 +4685,11 @@
             </trans-unit>
             <trans-unit>
                 <source>Your username or e-mail address is required.</source>
-                <target>Usuario y/o e-mail requerido.</target>
+                <target>Usuario requerido.</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Username or e-mail address not found please try again.</source>
+                <target>Usuario inválido. Por favor intente nuevamente.</target>
             </trans-unit>
         </body>
     </file>

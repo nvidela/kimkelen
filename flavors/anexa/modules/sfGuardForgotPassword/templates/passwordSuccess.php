@@ -31,7 +31,7 @@
       <div class="title_login">Login</div>
 
       <div class="form_row">
-        <p class="info-reset-password"><?php echo __("Your e-mail address will be asked in order to send you further instructions about how to reset your password.") ?></p>
+        <p class="info-reset-password"><?php echo __("Your username will be asked in order to send you further instructions about how to reset your password.") ?></p>
           <?php echo $form ?>
       </div>
       <div class="form_row">
