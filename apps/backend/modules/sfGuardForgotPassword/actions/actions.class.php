@@ -16,12 +16,13 @@ class sfGuardForgotPasswordActions extends BasesfGuardForgotPasswordActions
  
     	public function executePassword(sfWebRequest $request)
 	{
-		$this->form = new sfGuardFormForgotPassword();
+		$this->form = new sfGuardForgotPasswordCustomForm();
 		if ($request->isMethod(sfRequest::POST)) {
 			$this->form->bind($request->getParameter($this->form->getName()));
 			if ($this->form->isValid()) {
 				$values = $this->form->getValues();
 				$sf_guard_user = sfGuardUserPeer::retrieveByUsername($values['username_or_email'], true);
+                                
 				/*$tutor = TutorPeer::retrieveByUsername($sf_guard_user->getUsername());
 				if (!is_null($tutor)) {
 					$token_user = new TokenUser();
