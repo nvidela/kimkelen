@@ -503,5 +503,48 @@ class shared_courseActions extends autoShared_courseActions
     }
     $this->setTemplate('moveStudents');
   }
+  
+  public function executeFilterForDay(sfWebRequest $request)
+  {
+
+    $this->form = new TimeBlockForDayReportFormFilter();
+    if ($request->isMethod('POST'))
+    {
+      $this->form->bind($request->getParameter($this->form->getName()));
+      if ($this->form->isValid())
+      {
+        $params = $request->getParameter('time_block_for_day_report');        
+
+        $this->period_id = $params['career_school_year_period_id'];
+        $this->day = $params['day_id'];
+        $this->shift = ShiftPeer::retrieveByPK($params['shift_id']);
+        $this->career_school_year = CareerSchoolYearPeer::retrieveByPK($params['career_school_year_id']);
+        $this->divisions = DivisionPeer::retrieveByCareerSchoolYearAndShift($params['career_school_year_id'] , $params['shift_id']);
+        $this->time_blocks = TimeBlockPeer::retrieveByShift( $params['shift_id']);
+        $this->setLayout('cleanLayout');
+        $this->setTemplate('printTimeBlockForDayReport');
+        
+        $this->getUser()->setAttribute('day_id', $params['day_id']);
+        $this->getUser()->setAttribute('shift_id', $params['shift_id']);
+        $this->getUser()->setAttribute('csy_id', $params['career_school_year_id']);
+        $this->getUser()->setAttribute('p_id', $params['career_school_year_period_id']);
+      }
+    }
+
+    $this->route = "shared_course/filterForDay";
+  }
+  
+  public function executeReportCourseSubjectsToPDF(sfWebRequest $request)
+  {
+        $this->period_id = $this->getUser()->getAttribute('p_id');
+        $this->day = $this->getUser()->getAttribute('day_id');
+        $this->shift = ShiftPeer::retrieveByPK($this->getUser()->getAttribute('shift_id'));
+        $this->career_school_year = CareerSchoolYearPeer::retrieveByPK($this->getUser()->getAttribute('csy_id'));
+        $this->divisions = DivisionPeer::retrieveByCareerSchoolYearAndShift($this->getUser()->getAttribute('csy_id') , $this->getUser()->getAttribute('shift_id'));
+        $this->time_blocks = TimeBlockPeer::retrieveByShift($this->getUser()->getAttribute('shift_id'));
+        
+        $this->setLayout('cleanLayout');
+        $this->setTemplate('printTimeBlockForDayReport');
+  }
 
 }

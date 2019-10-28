@@ -209,6 +209,9 @@ class DivisionPeer extends BaseDivisionPeer
 
     return $c;
   }
-
-
+  
+  public static function retrieveByCareerSchoolYearAndShift($career_school_year_id,$shift_id)
+  {
+      return  SchoolBehaviourFactory::getInstance()->getDivisionsByCareerSchoolYearAndShift($career_school_year_id,$shift_id);
+  }
 }

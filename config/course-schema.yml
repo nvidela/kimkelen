@@ -234,7 +234,7 @@ classes:
         onDelete:          cascade
         onUpdate:          cascade
       day:
-        description:       Dia de la semana en que se cursa un curso: los valores van de 1 (lunes) a 7 (domingo)
+        description:       Dia de la semana en que se cursa un curso, los valores van de 1 (lunes) a 7 (domingo)
         type:              integer
         required:          true
       block:
@@ -735,3 +735,24 @@ classes:
         description:       Usuario que proceso el cierre
         type: varchar(50)
         required:          true
+        
+  TimeBlock:
+    tablename:            time_block
+    description:          Representa los bloques horarios de un día.
+    columns:
+      id:
+      start_time:
+        description:       Hora de comienzo de la cursada
+        type:              time
+        required:          true
+      end_time:
+        description:       Hora de fin de la cursada
+        type:              time
+        required:          true
+      shift_id:
+        description:      Especifica el turno del bloque horario
+        type:             integer
+        foreignTable:     shift
+        foreignReference: id
+        required:         true
+    

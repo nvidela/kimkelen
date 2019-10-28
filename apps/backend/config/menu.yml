@@ -76,6 +76,10 @@ root:
           change_status_motive:
             title: Motivos de cambio de estado
             url: @change_status_motive
+          time_block:
+            title: Bloques horarios
+            url: @time_block
+            credentials: [edit_time_block]
       separator:
       users:
         title: Usuarios
@@ -107,6 +111,9 @@ root:
           year_average_reports:
             title: Reporte de promedios por año
             url: average_report/filterBySchoolYear
+          time_block_per_day:
+            title: Reporte de horarios por día
+            url: shared_course/filterForDay
 
       school_years:
         title: Años lectivos

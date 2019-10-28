@@ -1286,4 +1286,16 @@ class BaseSchoolBehaviour extends InterfaceSchoolBehaviour
   {
       return $this->letter;
   }
+  
+  public static function getDivisionsByCareerSchoolYearAndShift($career_school_year_id,$shift_id)
+  {
+      $c = new Criteria();
+      $c->addJoin(DivisionPeer::DIVISION_TITLE_ID, DivisionTitlePeer::ID);
+      $c->add(DivisionPeer::CAREER_SCHOOL_YEAR_ID,$career_school_year_id);
+      $c->add(DivisionPeer::SHIFT_ID,$shift_id);
+      $c->addAscendingOrderByColumn(DivisionPeer::YEAR);
+      $c->addAscendingOrderByColumn(DivisionTitlePeer::NAME);
+      
+      return DivisionPeer::doSelect($c);
+  }
 }

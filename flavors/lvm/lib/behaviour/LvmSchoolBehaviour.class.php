@@ -283,5 +283,19 @@ class LvmSchoolBehaviour extends BaseSchoolBehaviour
     return $student->getCourseSubjectStudents($c);
 
   }
+  
+  public static function getDivisionsByCareerSchoolYearAndShift($career_school_year_id,$shift_id)
+  {
+      $division_titles = array('A','B','C','D','E');
+      $c = new Criteria();
+      $c->addJoin(DivisionPeer::DIVISION_TITLE_ID, DivisionTitlePeer::ID);
+      $c->add(DivisionPeer::CAREER_SCHOOL_YEAR_ID,$career_school_year_id);
+      $c->add(DivisionPeer::SHIFT_ID,$shift_id);
+      $c->add(DivisionTitlePeer::NAME,$division_titles,Criteria::IN);
+      $c->addAscendingOrderByColumn(DivisionPeer::YEAR);
+      $c->addAscendingOrderByColumn(DivisionTitlePeer::NAME);
+      
+      return DivisionPeer::doSelect($c);
+  }
 
 }

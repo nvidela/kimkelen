@@ -1,3 +1,12 @@
+time_block:
+  class: sfPropelRouteCollection
+  options:
+    model:                TimeBlock
+    module:               time_block
+    prefix_path:          time_block
+    column:               id
+    with_wildcard_routes: true
+
 medical_certificate:
   class: sfPropelRouteCollection
   options:
@@ -256,6 +265,14 @@ export_report_cards:
   url: /report_card/Boletines.pdf
   param: { module: report_card, action: reportCardsToPDF, sf_format: pdf }
 
+course_subjects_report:
+  url: shared_course/filterForDay
+  param: {module: shared_course, action: filterForDay}
+
+export_report_course_subjects:
+  url: /shared_course/HorariosPorDia.pdf
+  param: { module: shared_course, action: reportCourseSubjectsToPDF, sf_format: pdf, page-size:Legal }
+  
 student_free:
   class: sfPropelRouteCollection
   options:

@@ -2106,3 +2106,47 @@ div.wc-cal-event{
 {
     background-image: url('../images/tutor.png') !important;
 }
+
+.table_course_subject
+{
+    width: 99%; 
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.table_course_subject thead th,
+.table_course_subject tbody td
+{
+    border: 0.5px solid #555;
+    width:13.5%; 
+}
+
+.th_division
+{
+    width: 4.5% !important;
+}
+
+.table_course_subject thead th
+{
+    height: 30px;
+    background: #f2f2f2;
+}
+
+.table_course_subject tbody td
+{
+    padding:3px;
+}
+.subject_info_report
+{
+    font-size:14px;
+}
+
+.teacher_info_report
+{
+    font-size:11px;
+}
+
+.table_course_subject tr
+{    
+    page-break-inside: avoid;
+}

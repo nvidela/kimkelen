@@ -9239,6 +9239,26 @@ A PARTIR DE ACA EMPEZAMOS TRADUCCIONES 2.0
                         <source>Generate profile tutor for preceptor %preceptor%</source>
                         <target>Generar perfil tutor para el preceptor %preceptor%</target>
                     </trans-unit>
+                    <trans-unit>
+                        <source>Start time</source>
+                        <target>Hora inicio</target>
+                    </trans-unit>
+                    <trans-unit>
+                        <source>End time</source>
+                        <target>Hora fin</target>
+                    </trans-unit>
+                    <trans-unit>
+                        <source>Day id</source>
+                        <target>Día</target>
+                    </trans-unit>
+                    <trans-unit>
+                        <source>Shift %shift%</source>
+                        <target>Horario/Turno %shift%</target>
+                    </trans-unit>
+                    <trans-unit>
+                        <source>Time block for day report</source>
+                        <target>Reporte de horarios por día</target>
+                    </trans-unit>
 		</body>
 	</file>
 </xliff>

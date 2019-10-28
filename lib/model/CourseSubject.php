@@ -877,4 +877,15 @@ class CourseSubject extends BaseCourseSubject
 
      return parent::getCourseSubjectStudents($criteria);
   }
+  
+  public function getTeachersString()
+  {
+    $teachers = array();
+    foreach ($this->getCourseSubjectTeachers() as $cst)
+    {
+      $teachers[] = $cst->getTeacher();
+    }
+
+    return implode('-  ', $teachers);
+  }
 }

@@ -848,6 +848,38 @@ class Division extends BaseDivision
     
     return $this->hasStudents();
   }
+  
+  public function getCourseSubjectsPerTimeBlock($time_block,$day,$period_id)
+  {
+      $students_id = $this->getStudentsIds();
+      $c = new Criteria();
+      $c->addJoin(CourseSubjectStudentPeer::COURSE_SUBJECT_ID, CourseSubjectPeer::ID);
+      $c->addJoin(CourseSubjectPeer::COURSE_ID, CoursePeer::ID);
+      $c->addJoin(CourseSubjectPeer::CAREER_SUBJECT_SCHOOL_YEAR_ID, CareerSubjectSchoolYearPeer::ID);
+      $c->addJoin(CourseSubjectPeer::ID, CourseSubjectDayPeer::COURSE_SUBJECT_ID);
+      $c->add(CoursePeer::IS_PATHWAY,FALSE);
+      $c->add(CareerSubjectSchoolYearPeer::CAREER_SCHOOL_YEAR_ID,$this->getCareerSchoolYearId());
+      $c->add(CourseSubjectStudentPeer::STUDENT_ID, $students_id, Criteria::IN);
+      $c->add(CourseSubjectDayPeer::STARTS_AT, $time_block->getStartTime(),Criteria::LESS_EQUAL);
+      $c->add(CourseSubjectDayPeer::ENDS_AT, $time_block->getEndTime(),Criteria::GREATER_EQUAL);
+      $c->add(CourseSubjectDayPeer::DAY, $day);
+      
+      if(!is_null($period_id) && $period_id != '')
+      {
+          $csyp = CareerSchoolYearPeriodPeer::retrieveByPK($period_id);
+          $periods_t = CareerSchoolYearPeriodPeer::retrieveByCourseTypeAndCareerSchoolYear(CourseType::TRIMESTER, $csyp->getCareerSchoolYear());
+          
+          $p = array_map(create_function('$p', 'return $p->getId();'), $periods_t);
+          $p[]=$period_id;
+          $c->addJoin(CourseSubjectPeer::ID,CourseSubjectConfigurationPeer::COURSE_SUBJECT_ID, Criteria::LEFT_JOIN);
+          
+          $criterion = $c->getNewCriterion(CourseSubjectConfigurationPeer::CAREER_SCHOOL_YEAR_PERIOD_ID,$p, Criteria::IN);
+          $criterion->addOr($c->getNewCriterion(CourseSubjectConfigurationPeer::CAREER_SCHOOL_YEAR_PERIOD_ID,array($period_id), Criteria::IN));
+      }
+      $c->setDistinct(CourseSubjectPeer::ID);
+      return CourseSubjectPeer::doSelect($c);
+
+  }
 
 }
 sfPropelBehavior::add('Division', array('changelog'));

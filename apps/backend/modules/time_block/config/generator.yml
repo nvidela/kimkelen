@@ -1,0 +1,42 @@
+generator:
+  class: sfPropelRevisitedGenerator
+  param:
+    model_class:           TimeBlock
+    theme:                 extended
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          time_block
+    with_propel_route:     1
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Listado de bloques horarios
+        batch_actions: []
+        display: [start_time,end_time,shift]
+        object_actions:
+          _edit:
+            credentials: [edit_time_block]
+          _delete:
+            credentials: [edit_time_block]
+      filter: ~
+      form:    ~
+      edit:
+        title: Editar bloque horario
+        actions:
+          _list:
+            label:          Volver al listado
+          _save_and_list:
+            label:          Guardar
+      new:
+        title: Nuevo bloque horario
+        actions:
+          _list:
+            label:          Volver al listado
+          _save_and_list:
+            label:          Guardar
+          _save_and_add:
+            label:          Guardar y agregar otro
