@@ -849,7 +849,7 @@ class Division extends BaseDivision
     return $this->hasStudents();
   }
   
-  public function getCourseSubjectsPerTimeBlock($time_block,$day,$period_id)
+  public function getCourseSubjectsPerTimeBlock($time_block,$day)
   {
       $students_id = $this->getStudentsIds();
       $c = new Criteria();
@@ -863,19 +863,6 @@ class Division extends BaseDivision
       $c->add(CourseSubjectDayPeer::STARTS_AT, $time_block->getStartTime(),Criteria::LESS_EQUAL);
       $c->add(CourseSubjectDayPeer::ENDS_AT, $time_block->getEndTime(),Criteria::GREATER_EQUAL);
       $c->add(CourseSubjectDayPeer::DAY, $day);
-      
-      if(!is_null($period_id) && $period_id != '')
-      {
-          $csyp = CareerSchoolYearPeriodPeer::retrieveByPK($period_id);
-          $periods_t = CareerSchoolYearPeriodPeer::retrieveByCourseTypeAndCareerSchoolYear(CourseType::TRIMESTER, $csyp->getCareerSchoolYear());
-          
-          $p = array_map(create_function('$p', 'return $p->getId();'), $periods_t);
-          $p[]=$period_id;
-          $c->addJoin(CourseSubjectPeer::ID,CourseSubjectConfigurationPeer::COURSE_SUBJECT_ID, Criteria::LEFT_JOIN);
-          
-          $criterion = $c->getNewCriterion(CourseSubjectConfigurationPeer::CAREER_SCHOOL_YEAR_PERIOD_ID,$p, Criteria::IN);
-          $criterion->addOr($c->getNewCriterion(CourseSubjectConfigurationPeer::CAREER_SCHOOL_YEAR_PERIOD_ID,array($period_id), Criteria::IN));
-      }
       $c->setDistinct(CourseSubjectPeer::ID);
       return CourseSubjectPeer::doSelect($c);
 

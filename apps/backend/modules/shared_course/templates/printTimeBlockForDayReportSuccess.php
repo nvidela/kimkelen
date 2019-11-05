@@ -46,16 +46,40 @@
         <?php endforeach; ?>
     </thead>
     <tbody>
+    <?php $c_type = array(CourseType::BIMESTER, CourseType::QUATERLY_OF_A_TERM);?>
     <?php foreach ($divisions as $d):?>
         <tr>
             <td class="th_division"><strong><?php echo $d->getYear() .'°' . $d->getDivisionTitle()->getName()?></strong></td>
             <?php foreach ($time_blocks as $tb):?>
             <td>
-                <?php $css = $d->getCourseSubjectsPerTimeBLock($tb,$day,$period_id);?>
+                <?php $css = $d->getCourseSubjectsPerTimeBLock($tb,$day);?>
                 <?php foreach ($css as $cs):?>
                 <div class="box_course">
-                    <span class="subject_info_report"><strong><?php echo $cs?></strong></span>
-                    <div class="teacher_info_report"><?php echo ($cs->getTeachersString() != "") ? "( " . $cs->getTeachersString() . ")" : ""?></div>
+                    <?php if(is_null($period_id)):?>
+                    
+                        <span class="subject_info_report"><strong><?php echo $cs?></strong></span>
+                        <div class="teacher_info_report"><?php echo ($cs->getTeachersString() != "") ? "( " . $cs->getTeachersString() . ")" : ""?></div>
+                    
+                    <?php else: ?>
+                        
+                    <?php endif;?>
+                    <?php $configs = $cs->getCourseSubjectConfigurations(); ?>
+                    <?php $config = array_shift($configs); ?>
+                    <?php if (in_array($cs->getCourseType(), $c_type )): ?> 
+                        <?php if($config && $config->isForPeriodId($period_id)): ?>
+                            <span class="subject_info_report"><strong><?php echo $cs?></strong></span>
+                            <div class="teacher_info_report"><?php echo ($cs->getTeachersString() != "") ? "( " . $cs->getTeachersString() . ")" : ""?></div>
+              
+                        <?php endif;?>
+                    <?php else:?>
+                        <span class="subject_info_report"><strong><?php echo $cs?></strong></span>
+                        <div class="teacher_info_report"><?php echo ($cs->getTeachersString() != "") ? "( " . $cs->getTeachersString() . ")" : ""?></div>
+              
+                    <?php endif; ?>
+                     
+                    
+                    
+                    
                 </div>
                 
                 <?php endforeach; ?>

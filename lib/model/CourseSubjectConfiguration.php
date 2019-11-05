@@ -56,4 +56,19 @@ class CourseSubjectConfiguration extends BaseCourseSubjectConfiguration
 
     return $first_quaterly->getStartAt() == $this->getPeriod()->getStartAt();
   }
+  
+  public function isForPeriodId($period_id)
+  {
+    $csyp = CareerSchoolYearPeriodPeer::retrieveByPK($period_id);
+
+    if(is_null($this->getPeriod()->getCareerSchoolYearPeriodId()))
+    {
+        return $csyp->getId() == $this->getPeriod()->getId();
+    }
+    else
+    {   
+        return $csyp->getId() == $this->getPeriod()->getCareerSchoolYearPeriodId();
+    }
+  
+  }
 }
