@@ -80,6 +80,12 @@ api_person:
   url: /api/personas
   param:   { module: api, action: getPerson }
 
+api_get_students_by_tutor:
+  url:     /api/:tutor_id/get_students_by_tutor
+  class:   sfPropelRoute
+  param:   { module: api, action: getStudentsByTutor }
+  options: { model: Tutor, type: object, method: getStudentsByTutorId }
+
 api_get_tutor:
   url:     /api/:document_type/:document_number/get_tutor
   class:   sfPropelRoute

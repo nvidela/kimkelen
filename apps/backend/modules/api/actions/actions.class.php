@@ -472,5 +472,12 @@ class apiActions extends sfActions
         $this->setLayout(false);
         $this->setTemplate('getPersonalData');
       
+    }
+    
+    public function executeGetStudentsByTutor(sfWebRequest $request)
+    {
+        $this->students = $this->getRoute()->getObject();
+        $this->getResponse()->setHttpHeader('Content-type','application/json');
+        $this->setLayout(false);
     } 
 }

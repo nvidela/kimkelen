@@ -46,4 +46,20 @@ class TutorPeer extends BaseTutorPeer
 
         return $t;
     }
+
+    static function getStudentsByTutorId($parameters)
+    {
+        $c= new Criteria();
+        $c->addJoin(TutorPeer::ID, StudentTutorPeer::TUTOR_ID);
+        $c->addJoin(StudentPeer::ID,StudentTutorPeer::STUDENT_ID);
+        $c->add(TutorPeer::ID, $parameters['tutor_id']);
+        $s = StudentPeer::doSelect($c);
+        
+         if (!$s)
+        {
+          throw new sfError404Exception(sprintf('Tutor with id "%s"  does not have students.',  $parameters['tutor_id']));
+        }
+
+        return $s;
+    }
 }
