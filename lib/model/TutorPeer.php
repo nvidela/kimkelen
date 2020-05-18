@@ -31,4 +31,19 @@ class TutorPeer extends BaseTutorPeer
 
 		return $s;
 	 }
+    static public function getForDocumentTypeAndNumber($parameters)
+    {
+        $c = new Criteria();
+        $c->addJoin(TutorPeer::PERSON_ID, PersonPeer::ID);
+        $c->add(PersonPeer::IDENTIFICATION_NUMBER, $parameters['document_number']);
+        $c->add(PersonPeer::IDENTIFICATION_TYPE,$parameters['document_type'] );
+        $t = self::doSelectOne($c);
+
+        if (!$t)
+        {
+          throw new sfError404Exception(sprintf('Tutor with document "%s" "%s" does not exist.',  $parameters['document_type'], $parameters['document_number']));
+        }
+
+        return $t;
+    }
 }

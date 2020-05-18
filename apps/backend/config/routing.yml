@@ -80,6 +80,11 @@ api_person:
   url: /api/personas
   param:   { module: api, action: getPerson }
 
+api_get_tutor:
+  url:     /api/:document_type/:document_number/get_tutor
+  class:   sfPropelRoute
+  param:   { module: api, action: getTutor }
+  options: { model: Tutor, type: object, method: getForDocumentTypeAndNumber }
     
 change_status_motive:
   class: sfPropelRouteCollection

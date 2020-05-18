@@ -146,4 +146,17 @@ class Tutor extends BaseTutor
     }
 
   }
+
+  public function asArray()
+  {
+    return array(
+      'id' => $this->getId(),
+      'lastname'  => $this->getPerson()->getLastname(),
+      'firstname' => $this->getPerson()->getFirstname(),
+      'identification' => $this->getPerson()->getFullIdentification(),
+      'email'  => $this->getPerson()->getEmail(),
+      'phone'  => $this->getPerson()->getPhone(),
+      'address' => $this->getPerson()->getAddress() ? $this->getPerson()->getAddress()->getFullAddress() : null,
+    );
+  }
 }
