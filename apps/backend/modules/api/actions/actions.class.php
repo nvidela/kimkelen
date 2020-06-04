@@ -480,4 +480,12 @@ class apiActions extends sfActions
         $this->getResponse()->setHttpHeader('Content-type','application/json');
         $this->setLayout(false);
     } 
+
+   public function executeGetCareers(sfWebRequest $request)
+   {
+     $this->careers = $this->getRoute()->getObject();
+     $this->getResponse()->setHttpHeader('Content-type','application/json');
+     $this->setLayout(false);
+    
+   }
 }

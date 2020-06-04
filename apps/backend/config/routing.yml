@@ -91,6 +91,12 @@ api_get_tutor:
   class:   sfPropelRoute
   param:   { module: api, action: getTutor }
   options: { model: Tutor, type: object, method: getForDocumentTypeAndNumber }
+
+api_get_careers:
+  url:   /api/get_careers
+  class: sfPropelRoute
+  param: { module: api, action: getCareers }
+  options: { model: Career, type: object, method: getCareers}
     
 change_status_motive:
   class: sfPropelRouteCollection

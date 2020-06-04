@@ -272,6 +272,14 @@ class Career extends BaseCareer
     $career_school_years = parent::getCareerSchoolYears($criteria);
     return isset($career_school_years[0])?$career_school_years[0]:null;
   }
-
+  
+ public function asArray()
+  {
+    return array(
+      'id' => $this->getId(),
+      'plan_name'  => $this->getPlanName(),
+      'career_name' => $this->getCareerName()
+    );
+  }
 }
 sfPropelBehavior::add('Career', array('changelog'));

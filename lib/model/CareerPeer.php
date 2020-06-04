@@ -34,4 +34,9 @@ class CareerPeer extends BaseCareerPeer
   {
     return self::doCount(new Criteria()) > 1;
   }
+  
+  static function getCareers()
+  {
+    return self::doSelect(new Criteria());
+  }
 }
