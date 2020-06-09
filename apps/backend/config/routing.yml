@@ -86,6 +86,12 @@ api_get_students_by_tutor:
   param:   { module: api, action: getStudentsByTutor }
   options: { model: Tutor, type: object, method: getStudentsByTutorId }
 
+api_get_students_by_division:
+  url:     /api/:division_id/get_students_by_division
+  class:   sfPropelRoute
+  param:   { module: api, action: getStudentsByDivision }
+  options: { model: Division, type: object, method: getStudentsByDivisionId }
+
 api_get_tutor:
   url:     /api/:document_type/:document_number/get_tutor
   class:   sfPropelRoute

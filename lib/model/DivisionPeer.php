@@ -210,5 +210,17 @@ class DivisionPeer extends BaseDivisionPeer
     return $c;
   }
 
-
+    public static function getStudentsByDivisionId($parameters)
+    {
+        $d = DivisionPeer::retrieveByPk($parameters['division_id']);
+        
+         if (!$d)
+        {
+          throw new sfError404Exception(sprintf('Division with id "%s"  does not exist.',  $parameters['division_id']));
+        }
+        else
+	{ 
+           return $d->getStudents();
+	}
+    }
 }

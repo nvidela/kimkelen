@@ -488,4 +488,12 @@ class apiActions extends sfActions
      $this->setLayout(false);
     
    }
+
+    public function executeGetStudentsByDivision(sfWebRequest $request)
+    {
+        $this->students = $this->getRoute()->getObject();
+        $this->getResponse()->setHttpHeader('Content-type','application/json');
+        $this->setTemplate('getStudentsByTutor');
+        $this->setLayout(false);
+    } 
 }
