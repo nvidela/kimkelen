@@ -223,4 +223,16 @@ class StudentPeer extends BaseStudentPeer
     return $s;
   }
   
+ static public function getForId($parameters)
+  {
+    $s =  self::retrieveByPk($parameters['student_id']);
+
+    if (!$s)
+    {
+      throw new sfError404Exception(sprintf('Student with id "%s" does not exist.', $parameters['id']));
+    }
+
+    return $s;
+  }
+  
 }

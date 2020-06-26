@@ -98,6 +98,12 @@ api_get_tutor:
   param:   { module: api, action: getTutor }
   options: { model: Tutor, type: object, method: getForDocumentTypeAndNumber }
 
+api_get_student:
+  url:     /api/:student_id/get_student
+  class:   sfPropelRoute
+  param:   { module: api, action: getStudent }
+  options: { model: Student, type: object, method: getForId }
+
 api_get_careers:
   url:   /api/get_careers
   class: sfPropelRoute
