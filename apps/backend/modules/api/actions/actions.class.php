@@ -506,5 +506,21 @@ class apiActions extends sfActions
         $this->setLayout(false);
         $this->setTemplate('getPersonalData');
       
+    }
+   
+    public function executeGetDivisions(sfWebRequest $request)
+    {
+        $this->items = $this->getRoute()->getObject();
+        $this->getResponse()->setHttpHeader('Content-type','application/json');
+        $this->setTemplate('getDivisions');
+        $this->setLayout(false);
+    }
+
+    public function executeGetPeriods(sfWebRequest $request)
+    {
+        $this->items = $this->getRoute()->getObject();
+        $this->getResponse()->setHttpHeader('Content-type','application/json');
+        $this->setTemplate('getDivisions');
+        $this->setLayout(false);
     } 
 }

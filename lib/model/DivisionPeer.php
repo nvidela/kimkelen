@@ -223,4 +223,20 @@ class DivisionPeer extends BaseDivisionPeer
            return $d->getStudents();
 	}
     }
+
+   public static function getForSchoolYearAndCareer($parameters)
+  {
+        $c = new Criteria();
+        $c->addJoin(DivisionPeer::CAREER_SCHOOL_YEAR_ID, CareerSchoolYearPeer::ID);
+        $c->add(CareerSchoolYearPeer::CAREER_ID, $parameters['career_id']);
+        $c->add(CareerSchoolYearPeer::SCHOOL_YEAR_ID, $parameters['school_year_id']);
+        
+        $d = self::doSelect($c);
+        if (!$d)
+        {
+          throw new sfError404Exception(sprintf('Divisions does not exist.'));
+        }
+
+        return $d;
+  }
 }

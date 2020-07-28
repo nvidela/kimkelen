@@ -849,5 +849,15 @@ class Division extends BaseDivision
     return $this->hasStudents();
   }
 
+  public function asArray()
+  {
+    return array(
+      'name'  => $this->getDivisionTitle()->getName(),
+      'year' => $this->getYear(),
+      'school_year' => $this->getCareerSchoolYear()->getSchoolYear()->getYear(),
+      'career' => $this->getCareerSchoolYear()->getCareer()->getCareerName()
+    );
+  }
+
 }
 sfPropelBehavior::add('Division', array('changelog'));

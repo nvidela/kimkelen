@@ -109,6 +109,18 @@ api_get_careers:
   class: sfPropelRoute
   param: { module: api, action: getCareers }
   options: { model: Career, type: object, method: getCareers}
+
+api_get_divisions:
+  url:     /api/:school_year_id/:career_id/get_divisions
+  class:   sfPropelRoute
+  param:   { module: api, action: getDivisions }
+  options: { model: Division, type: object, method: getForSchoolYearAndCareer }
+
+api_get_periods:
+  url:     /api/:school_year_id/:career_id/get_periods
+  class:   sfPropelRoute
+  param:   { module: api, action: getPeriods }
+  options: { model: CareerSchoolYearPeriod, type: object, method: getForSchoolYearAndCareer }
     
 change_status_motive:
   class: sfPropelRouteCollection

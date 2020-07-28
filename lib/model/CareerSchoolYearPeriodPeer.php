@@ -240,4 +240,20 @@ class CareerSchoolYearPeriodPeer extends BaseCareerSchoolYearPeriodPeer
   
   }
 
+  public static function getForSchoolYearAndCareer($parameters)
+  {
+        $c = new Criteria();
+        $c->addJoin(CareerSchoolYearPeriodPeer::CAREER_SCHOOL_YEAR_ID, CareerSchoolYearPeer::ID);
+        $c->add(CareerSchoolYearPeer::CAREER_ID, $parameters['career_id']);
+        $c->add(CareerSchoolYearPeer::SCHOOL_YEAR_ID, $parameters['school_year_id']);
+
+        $p = self::doSelect($c);
+        if (!$p)
+        {
+          throw new sfError404Exception(sprintf('Periods does not exist.'));
+        }
+
+        return $p;
+  }
+
 }

@@ -73,4 +73,16 @@ class CareerSchoolYearPeriod extends BaseCareerSchoolYearPeriod
   {
     return $this->getIsClosed();
   }
+
+  public function asArray()
+  {
+    return array(
+      'name'  => $this->getName(),
+      'start_at' => $this->getStartAt(),
+      'end_at' => $this->getEndAt(),
+      'is_closed' => $this->getIsClosed(),
+      'school_year' => $this->getCareerSchoolYear()->getSchoolYear()->getYear(),
+      'career' => $this->getCareerSchoolYear()->getCareer()->getCareerName()
+    );
+  }
 }
